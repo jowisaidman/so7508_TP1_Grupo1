@@ -1,7 +1,8 @@
 #!/bin/bash
 
-exec >EXIT_LOG.log #redirecciono salida estandar
+exec > EXIT_LOG.log #redirecciono salida estandar
 #exec 2>stdoin #redirecciono entrada estandar
+echo $BASHPID
 
 (
 declare -i count=1
