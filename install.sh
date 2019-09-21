@@ -1,7 +1,7 @@
 #!/bin/bash
 
 main () {
-    echo -e "Bienvenido, la instalacion a comenzado"
+    echo "Bienvenido, la instalacion a comenzado"
     installation_accepted="NO"
     assign_default_subdirectories
     while [ "$installation_accepted" != "SI" ] 
@@ -23,14 +23,86 @@ assign_default_subdirectories () {
     s_exit="salida"
 }
 
+#la idea es pasar el parametro con su pregunta y si se toca enter que se
+#quede el valor por defecto de la variable
+#falta validar que no ponga un directorio que ya puso (una lista con constantes)
+validate_subdirectorie () {
+    zero=0
+    read -p "$1" value
+    lenght=${#value}
+    if [ "$value" -eq "$zero" ]
+    then
+        echo El largo de $string es $lenght
+    fi
+}
+
+#entre parentesis es el valor por defecto, si se toca enter queda el valor por defecto
 ask_subdirectories () {
-    read -p "Indique el nombre para el directorio de ejecutables ($s_executable): " s_executable
-    read -p "Indique el nombre para el directorio de archivos maestros ($s_master): " s_master
-    read -p "Indique el nombre del directorio de los archivos externos a procesar ($s_extern): " s_extern
-    read -p "Indique el nombre del directorio de archivos aceptados para procesar ($s_temp): " s_temp
-    read -p "Indique el nombre del directorio de los archivos rechazados ($s_rejected): " s_rejected
-    read -p "Indique el nombre del directorio de los archivos procesados ($s_processed): " s_processed
-    read -p "Indique el nombre del directorio de los archivos de salida ($s_exit): " s_exit
+    zero=0
+    echo Para dejar el valor mostrado entre parentesis precione enter
+
+    read -p "Indique el nombre para el directorio de ejecutables ($s_executable): " temp_var
+    lenght=${#temp_var}
+    if [ "$lenght" -eq "$zero" ]
+    then
+        echo El valor no cambio
+    else 
+        s_executable=$temp_var
+    fi    
+
+    read -p "Indique el nombre para el directorio de archivos maestros ($s_master): " temp_var
+    lenght=${#temp_var}
+    if [ "$lenght" -eq "$zero" ]
+    then
+        echo El valor no cambio
+    else 
+        s_master=$temp_var
+    fi 
+
+    read -p "Indique el nombre del directorio de los archivos externos a procesar ($s_extern): " temp_var
+    lenght=${#temp_var}
+    if [ "$lenght" -eq "$zero" ]
+    then
+        echo El valor no cambio
+    else 
+        s_extern=$temp_var
+    fi 
+
+    read -p "Indique el nombre del directorio de archivos aceptados para procesar ($s_temp): " temp_var
+    lenght=${#temp_var}
+    if [ "$lenght" -eq "$zero" ]
+    then
+        echo El valor no cambio
+    else 
+        ss_temp=$temp_var
+    fi 
+
+    read -p "Indique el nombre del directorio de los archivos rechazados ($s_rejected): " temp_var
+    lenght=${#temp_var}
+    if [ "$lenght" -eq "$zero" ]
+    then
+        echo El valor no cambio
+    else 
+        s_rejected=$temp_var
+    fi 
+
+    read -p "Indique el nombre del directorio de los archivos procesados ($s_processed): " temp_var
+    lenght=${#temp_var}
+    if [ "$lenght" -eq "$zero" ]
+    then
+        echo El valor no cambio
+    else 
+        s_processed=$temp_var
+    fi 
+
+    read -p "Indique el nombre del directorio de los archivos de salida ($s_exit): " temp_var
+    lenght=${#temp_var}
+    if [ "$lenght" -eq "$zero" ]
+    then
+        echo El valor no cambio
+    else 
+        s_exit=$temp_var
+    fi 
 }
 
 print_details () {
