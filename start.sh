@@ -1,18 +1,16 @@
 #!/bin/bash
-
-CORRIENDO=0
+source ./validaciones.sh
 
 exec 6>&1 #Guardo el stdout default
-exec > "stop.log"
-ps -ef | grep ".*process.sh" | grep -v grep   
+exec >> "start.log"
+
+isRunning "process.sh"   
 
 if [ $? -ne 0 ]; then
-  exec 1>&6 6>&-
-  echo "Se Corre el proceso correctamente"
+  echo "$(date +'%d/%m/%Y %T') Se Corre el proceso correctamente"
   bash ./process.sh
 else
-  exec 1>&6 6>&-
-  echo "No se puede correr el roceso, ya que hay otro corriendo"
+  echo "$(date +'%d/%m/%Y %T') No se puede correr el proceso, ya que hay otro corriendo"
   exit
 fi
 
