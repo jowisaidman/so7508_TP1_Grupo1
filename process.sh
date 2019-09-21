@@ -9,7 +9,10 @@ declare -i count=1
 declare -i increment=1
 while true; do
     echo "Actual count is: $count"
+    
     #Proceso info
+    bash preprocess.sh
+
     count=$((count + increment))
     sleep 1
 done
