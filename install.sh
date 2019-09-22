@@ -1,10 +1,15 @@
 #!/bin/bash
 
 main () {
-    echo "Bienvenido, la instalacion a comenzado"
+    echo "Bienvenido, la instalacion a comenzado!"
+    echo "Debera seleccionar los nombres de los directorios, debe tener en cuenta que NO se puede: "
+    echo "    -Utilizar nombres repetidos
+    -Utilizar nombres de palabras reservadas"
+    echo ""
     installation_accepted="NO"
     assign_default_subdirectories
     reapeat_directory="NO"
+    declare -a directories_array
     while [ "$installation_accepted" != "SI" ] || [ "$reapeat_directory" != "NO" ]
     do 
         reapeat_directory="NO"
@@ -14,6 +19,8 @@ main () {
         directories_array=("$grupo" "$s_executable" "$s_master" "$s_extern" "$s_temp" "$s_rejected" "$s_processed" "$s_exit")
         validate_subdirectorie "$directories_array" "$reapeat_directory"
     done
+    new_directories=("$s_executable" "$s_master" "$s_extern" "$s_temp" "$s_rejected" "$s_processed" "$s_exit")
+    create_directories "$new_directories"
 }
 
 assign_default_subdirectories () {
@@ -34,7 +41,7 @@ assign_default_subdirectories () {
 #    zero=0
 #    read -p "$1" value
 #    lenght=${#value}
-#    if [ "$value" -eq "$zero" ]
+#    if [ "$value" != "$zero" ]
 #    then
 #        echo El largo de $string es $lenght
 #    fi
@@ -44,7 +51,7 @@ validate_subdirectorie () {
         for j in "${!directories_array[@]}"; do
             if [ "${directories_array[i]}" == "${directories_array[j]}" ] && [ "$i" != "$j" ]; then
                 echo
-                echo "ERROR: El directorio (${directories_array[j]}) se encuentra repetido!"
+                echo "ERROR: El directorio (${directories_array[j]}) esta duplicado!"
                 echo
                 reapeat_directory="SI"
                 return
@@ -56,68 +63,47 @@ validate_subdirectorie () {
 #entre parentesis es el valor por defecto, si se toca enter queda el valor por defecto
 ask_subdirectories () {
     zero=0
-    echo Para dejar el valor mostrado entre parentesis precione enter
-
+    echo "Paso 1: Seleccionar directorios"
+    echo "ATENCION: Para dejar el valor mostrado entre parentesis presione enter"
     read -p "Indique el nombre para el directorio de ejecutables ($s_executable): " temp_var
     lenght=${#temp_var}
-    if [ "$lenght" -eq "$zero" ]
-    then
-        echo El valor no cambio
-    else 
+    if [ "$lenght" != "$zero" ]; then
         s_executable=$temp_var
     fi    
 
     read -p "Indique el nombre para el directorio de archivos maestros ($s_master): " temp_var
     lenght=${#temp_var}
-    if [ "$lenght" -eq "$zero" ]
-    then
-        echo El valor no cambio
-    else 
+    if [ "$lenght" != "$zero" ]; then
         s_master=$temp_var
     fi 
 
     read -p "Indique el nombre del directorio de los archivos externos a procesar ($s_extern): " temp_var
     lenght=${#temp_var}
-    if [ "$lenght" -eq "$zero" ]
-    then
-        echo El valor no cambio
-    else 
+    if [ "$lenght" != "$zero" ]; then
         s_extern=$temp_var
     fi 
 
     read -p "Indique el nombre del directorio de archivos aceptados para procesar ($s_temp): " temp_var
     lenght=${#temp_var}
-    if [ "$lenght" -eq "$zero" ]
-    then
-        echo El valor no cambio
-    else 
+    if [ "$lenght" != "$zero" ]; then
         ss_temp=$temp_var
     fi 
 
     read -p "Indique el nombre del directorio de los archivos rechazados ($s_rejected): " temp_var
     lenght=${#temp_var}
-    if [ "$lenght" -eq "$zero" ]
-    then
-        echo El valor no cambio
-    else 
+    if [ "$lenght" != "$zero" ]; then
         s_rejected=$temp_var
     fi 
 
     read -p "Indique el nombre del directorio de los archivos procesados ($s_processed): " temp_var
     lenght=${#temp_var}
-    if [ "$lenght" -eq "$zero" ]
-    then
-        echo El valor no cambio
-    else 
+    if [ "$lenght" != "$zero" ]; then
         s_processed=$temp_var
     fi 
 
     read -p "Indique el nombre del directorio de los archivos de salida ($s_exit): " temp_var
     lenght=${#temp_var}
-    if [ "$lenght" -eq "$zero" ]
-    then
-        echo El valor no cambio
-    else 
+    if [ "$lenght" != "$zero" ]; then
         s_exit=$temp_var
     fi 
 }
@@ -139,6 +125,20 @@ print_details () {
     echo ATENCION: Los logs del sistema se depositan en /conf/log
     echo
     echo Estado de la instalacion: LISTA
+}
+
+create_directories () {
+    mkdir -p GRUPO01
+    echo ""
+    echo "Paso 2: Creacion de los directorios"
+    for j in "${!new_directories[@]}"; do
+        if [ ! -d GRUPO01/"${new_directories[j]}" ]; then
+            mkdir -p GRUPO01/"${new_directories[j]}"
+            echo "Se creo directorio (GRUPO01/${new_directories[j]})"
+        else
+            echo "El directorio (GRUPO01/${new_directories[j]}) ya esta creado"
+        fi         
+    done
 }
 
 main
