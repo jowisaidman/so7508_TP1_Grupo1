@@ -4,11 +4,15 @@ main () {
     echo "Bienvenido, la instalacion a comenzado"
     installation_accepted="NO"
     assign_default_subdirectories
-    while [ "$installation_accepted" != "SI" ] 
-    do
+    reapeat_directory="NO"
+    while [ "$installation_accepted" != "SI" ] || [ "$reapeat_directory" != "NO" ]
+    do 
+        reapeat_directory="NO"
         ask_subdirectories "$s_executable" "$s_master" "$s_extern" "$s_temp" "$s_rejected" "$s_processed" "$s_exit"
         print_details "$s_executable" "$s_master" "$s_extern" "$s_temp" "$s_rejected" "$s_processed" "$s_exit"
         read -p "¿Confirma la instalacion? (SI-NO): " installation_accepted
+        directories_array=("$grupo" "$s_executable" "$s_master" "$s_extern" "$s_temp" "$s_rejected" "$s_processed" "$s_exit")
+        validate_subdirectorie "$directories_array" "$reapeat_directory"
     done
 }
 
@@ -26,14 +30,27 @@ assign_default_subdirectories () {
 #la idea es pasar el parametro con su pregunta y si se toca enter que se
 #quede el valor por defecto de la variable
 #falta validar que no ponga un directorio que ya puso (una lista con constantes)
+#"""validate_subdirectorie () {
+#    zero=0
+#    read -p "$1" value
+#    lenght=${#value}
+#    if [ "$value" -eq "$zero" ]
+#    then
+#        echo El largo de $string es $lenght
+#    fi
+#}
 validate_subdirectorie () {
-    zero=0
-    read -p "$1" value
-    lenght=${#value}
-    if [ "$value" -eq "$zero" ]
-    then
-        echo El largo de $string es $lenght
-    fi
+    for i in "${!directories_array[@]}"; do
+        for j in "${!directories_array[@]}"; do
+            if [ "${directories_array[i]}" == "${directories_array[j]}" ] && [ "$i" != "$j" ]; then
+                echo
+                echo "ERROR: El directorio (${directories_array[j]}) se encuentra repetido!"
+                echo
+                reapeat_directory="SI"
+                return
+            fi
+        done
+    done
 }
 
 #entre parentesis es el valor por defecto, si se toca enter queda el valor por defecto
