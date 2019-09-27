@@ -12,12 +12,12 @@ main () {
     create_initial_directories "$grupo" "$s_conf"
     reapeat_directory="NO"
     installation_accepted="NO"
-    declare -a directories_array
+    declare -a directories_array=("$grupo" "$s_executable" "$s_master" "$s_extern" "$s_temp" "$s_rejected" "$s_processed" "$s_exit" "$s_conf")
     while [ "$installation_accepted" != "SI" ] || [ "$reapeat_directory" != "NO" ] #este ciclo deberia ir en una funcion
     do 
         reapeat_directory="NO"
         ask_subdirectories "$s_executable" "$s_master" "$s_extern" "$s_temp" "$s_rejected" "$s_processed" "$s_exit"
-        print_details "$s_executable" "$s_master" "$s_extern" "$s_temp" "$s_rejected" "$s_processed" "$s_exit"
+        print_details "$directories_array"
         read -p "¿Confirma la instalacion? (SI-NO): " installation_accepted
         directories_array=("$grupo" "$s_executable" "$s_master" "$s_extern" "$s_temp" "$s_rejected" "$s_processed" "$s_exit" "$s_conf")
         validate_subdirectories "$directories_array" "$reapeat_directory"
@@ -134,16 +134,16 @@ print_details () { #cambiar funcion, que maneje un array
     echo "INFORMACION"
     echo ""
     echo "  TP SO7508 2º Cuatrimestre 2019. Copyright © Grupo 01"
-    echo "  Directorio padre: $grupo"
+    echo "  Directorio padre: GRUPO01"
     echo "  Directorio de configuración:  /conf"
     echo "  Archivos de log: /conf/log"
-    echo "  Libreria de ejecutables: /$s_executable"
-    echo "  Repositorio de maestros: /$s_master"
-    echo "  Directorio para las novedades… /$s_extern"
-    echo "  Directorio para los archivos aceptados… /$s_temp"
-    echo "  Directorio para los archivos rechazados… /$s_rejected"
-    echo "  Directorio para Archivos procesados… /$s_processed"
-    echo "  Directorio para los archivos de salida… /$s_exit"
+    echo "  Libreria de ejecutables: /${directories_array[0]}"
+    echo "  Repositorio de maestros: /${directories_array[1]}"
+    echo "  Directorio para las novedades… /${directories_array[2]}"
+    echo "  Directorio para los archivos aceptados… /${directories_array[3]}"
+    echo "  Directorio para los archivos rechazados… /${directories_array[4]}"
+    echo "  Directorio para Archivos procesados… /${directories_array[5]}"
+    echo "  Directorio para los archivos de salida… /${directories_array[6]}"
     echo ""
     echo "ATENCION: Los logs del sistema se depositan en /conf/log"
     echo ""
@@ -162,12 +162,8 @@ create_initial_directories () {
 create_directories () {
     echo "Paso 2: Creacion de los directorios"
     for j in "${!new_directories[@]}"; do
-        #if [ ! -d GRUPO01/"${new_directories[j]}" ]; then
         mkdir -p GRUPO01/"${new_directories[j]}"
         echo "Se creo directorio (GRUPO01/${new_directories[j]})"
-        #else
-        #    echo "El directorio (GRUPO01/${new_directories[j]}) ya esta creado"
-        #fi
         sleep 1         
     done
     echo ""
@@ -209,12 +205,6 @@ move_files () {
 }
 
 check_installation () {
-    #ejemplo de como comparar strings (con los paramtros no me funciona)
-    #ee="aa"
-    #if [[ "$ee" = "aa" ]]; then
-    #  echo "son igual"
-    #fi
-
     if [ ${#repair_installation} -eq 0 ]; then #solo detecta si ingresaron un parametro no -r. (probe comparar contra -r y daba mal)
         echo "Bienvenido, detectamos que el programa ya esta instalado, se verificaran los datos de instalacion"
     else
@@ -223,14 +213,14 @@ check_installation () {
     echo ""
 
     installation_is_ok=0 #0=false; 1=true
-    declare -a config_directories=()
+    declare -a directories_array=()
     declare -a created_directories=()
     declare -a missing_directories=()
-    read_conf_file "$config_directories"
+    read_conf_file "$directories_array"
     get_created_directories "$created_directories"
-    check_directories "$config_directories" "$created_directories" "$missing_directories"
+    check_directories "$directories_array" "$created_directories" "$missing_directories"
     if [ "${#missing_directories[@]}" -eq 0 ]; then
-        echo "Todo en orden"
+        print_details "$directories_array"
     else
         echo "Faltan los directorios:"
         printf '    %s\n' "${missing_directories[@]}"
@@ -242,32 +232,28 @@ read_conf_file () {
     input="$PWD/GRUPO01/conf/config.txt"
     while IFS= read -r line
     do
-      config_directories+=("$line/")
+      directories_array+=("$line")
     done < "$input"
 }
 
 get_created_directories () {
     cd GRUPO01
     for d in */ ; do
-        created_directories+=("$d")
+        created_directories+=("${d::-1}")
     done
     cd ..
 }
 
 check_directories () {
-    #printf '%s ' "${config_directories[@]}"
-    #echo ""
-    #printf '%s ' "${created_directories[@]}"
-    #echo ""
     #missing_directories=$(${config_directories[@]} ${created_directories[@]} | tr ' ' '\n' | sort | uniq -u) #magic
-    for i in "${!config_directories[@]}"; do
-        containsElement "${config_directories[i]}" "${created_directories[@]}"
+    for i in "${!directories_array[@]}"; do
+        containsElement "${directories_array[i]}" "${created_directories[@]}"
         declare -i exists=$?
         if [ "$exists" -eq 0 ]; then
-            missing_directories+=("${config_directories[i]}")
-            echo "ATENCION: El directorio ${config_directories[i]} NO existe"
+            missing_directories+=("${directories_array[i]}")
+            echo "ATENCION: El directorio ${directories_array[i]} NO existe"
         else
-            echo "El directorio ${config_directories[i]} existe"
+            echo "El directorio ${directories_array[i]} existe"
         fi
         sleep 1
     done
