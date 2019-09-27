@@ -1,12 +1,18 @@
 #!/bin/bash
 
+repair_installation=$1
+
 main () {
+    if [ -d "GRUPO01/" ]; then
+        check_installation
+        return
+    fi
     show_ini 
-    installation_accepted="NO"
     assign_default_subdirectories
     reapeat_directory="NO"
+    installation_accepted="NO"
     declare -a directories_array
-    while [ "$installation_accepted" != "SI" ] || [ "$reapeat_directory" != "NO" ]
+    while [ "$installation_accepted" != "SI" ] || [ "$reapeat_directory" != "NO" ] #este ciclo deberia ir en una funcion
     do 
         reapeat_directory="NO"
         ask_subdirectories "$s_executable" "$s_master" "$s_extern" "$s_temp" "$s_rejected" "$s_processed" "$s_exit"
@@ -15,7 +21,7 @@ main () {
         directories_array=("$grupo" "$s_executable" "$s_master" "$s_extern" "$s_temp" "$s_rejected" "$s_processed" "$s_exit")
         validate_subdirectories "$directories_array" "$reapeat_directory"
     done
-    new_directories=("$s_executable" "$s_master" "$s_extern" "$s_temp" "$s_rejected" "$s_processed" "$s_exit")
+    new_directories=("conf" "$s_executable" "$s_master" "$s_extern" "$s_temp" "$s_rejected" "$s_processed" "$s_exit")
     create_directories "$new_directories"
     unzip_files
     move_files "$s_executable"
@@ -42,18 +48,6 @@ assign_default_subdirectories () {
     s_exit="salida"
 }
 
-#la idea es pasar el parametro con su pregunta y si se toca enter que se
-#quede el valor por defecto de la variable
-#falta validar que no ponga un directorio que ya puso (una lista con constantes)
-#"""validate_subdirectorie () {
-#    zero=0
-#    read -p "$1" value
-#    lenght=${#value}
-#    if [ "$value" != "$zero" ]
-#    then
-#        echo El largo de $string es $lenght
-#    fi
-#}
 validate_subdirectories () {
     for i in "${!directories_array[@]}"; do
         for j in "${!directories_array[@]}"; do
@@ -188,4 +182,31 @@ move_files () {
     echo ""
 }
 
-main
+check_installation () {
+    #ejemplo de como comparar strings (con los paramtros no me funciona)
+    #ee="aa"
+    #if [[ "$ee" = "aa" ]]; then
+    #  echo "son igual"
+    #fi
+
+    if [ ${#repair_installation} -eq 0 ]; then #solo detecta si ingresaron un parametro no -r. (probe comparar contra -r y daba mal)
+        echo "Bienvenido, detectamos que el programa ya esta instalado, se verificaran los datos de instalacion"
+    else
+        echo "Bienvenido, el modo reparacion a comenzado"
+    fi
+
+    installation_is_ok=0 #0=false; 1=true
+    check_directories
+}
+
+check_directories () {
+    cd GRUPO01
+    declare -i count=$(find $PWD -type d | wc -l)
+    if [ "$count" -eq 9 ]; then
+        installation_is_ok=1
+    else
+        echo "Se detecto un error en la instalacion, comezara el proceso de reparacion"
+    fi
+}
+
+main 
