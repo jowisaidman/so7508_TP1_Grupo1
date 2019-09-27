@@ -9,6 +9,7 @@ main () {
     fi
     show_ini 
     assign_default_subdirectories
+    create_initial_directories "$grupo" "$s_conf"
     reapeat_directory="NO"
     installation_accepted="NO"
     declare -a directories_array
@@ -18,10 +19,11 @@ main () {
         ask_subdirectories "$s_executable" "$s_master" "$s_extern" "$s_temp" "$s_rejected" "$s_processed" "$s_exit"
         print_details "$s_executable" "$s_master" "$s_extern" "$s_temp" "$s_rejected" "$s_processed" "$s_exit"
         read -p "¿Confirma la instalacion? (SI-NO): " installation_accepted
-        directories_array=("$grupo" "$s_executable" "$s_master" "$s_extern" "$s_temp" "$s_rejected" "$s_processed" "$s_exit")
+        directories_array=("$grupo" "$s_executable" "$s_master" "$s_extern" "$s_temp" "$s_rejected" "$s_processed" "$s_exit" "$s_conf")
         validate_subdirectories "$directories_array" "$reapeat_directory"
     done
-    new_directories=("conf" "$s_executable" "$s_master" "$s_extern" "$s_temp" "$s_rejected" "$s_processed" "$s_exit")
+    new_directories=("$s_executable" "$s_master" "$s_extern" "$s_temp" "$s_rejected" "$s_processed" "$s_exit")
+    save_configuration "$new_directories"
     create_directories "$new_directories"
     unzip_files
     move_files "$s_executable"
@@ -46,6 +48,22 @@ assign_default_subdirectories () {
     s_rejected="rechazados"
     s_processed="procesados"
     s_exit="salida"
+    s_conf="conf"
+}
+
+save_configuration () {
+    echo "Guardando configuracion de los directorios"
+    for j in "${!new_directories[@]}"; do
+        if [ ! -e "GRUPO01/conf/conf.txt" ]; then
+            echo ${new_directories[j]} >> "GRUPO01/conf/config.txt"
+        else
+            echo ${new_directories[j]} > "GRUPO01/conf/config.txt"
+        fi
+    done
+    echo "conf" >> "GRUPO01/conf/config.txt"
+    echo "Configuracion guardada"
+    echo ""    
+    sleep 1
 }
 
 validate_subdirectories () {
@@ -132,16 +150,24 @@ print_details () { #cambiar funcion, que maneje un array
     echo "Estado de la instalacion: LISTA"
 }
 
+create_initial_directories () {
+    echo "Creando directorios iniciales"
+    mkdir "$grupo"
+    echo "Se creo directorio ($grupo)"
+    mkdir "$grupo/$s_conf"
+    echo "Se creo directorio ($grupo/$s_conf)"
+    echo ""
+}
+
 create_directories () {
-    mkdir -p GRUPO01
     echo "Paso 2: Creacion de los directorios"
     for j in "${!new_directories[@]}"; do
-        if [ ! -d GRUPO01/"${new_directories[j]}" ]; then
-            mkdir -p GRUPO01/"${new_directories[j]}"
-            echo "Se creo directorio (GRUPO01/${new_directories[j]})"
-        else
-            echo "El directorio (GRUPO01/${new_directories[j]}) ya esta creado"
-        fi
+        #if [ ! -d GRUPO01/"${new_directories[j]}" ]; then
+        mkdir -p GRUPO01/"${new_directories[j]}"
+        echo "Se creo directorio (GRUPO01/${new_directories[j]})"
+        #else
+        #    echo "El directorio (GRUPO01/${new_directories[j]}) ya esta creado"
+        #fi
         sleep 1         
     done
     echo ""
