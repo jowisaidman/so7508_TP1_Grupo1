@@ -12,19 +12,19 @@ main () {
     create_initial_directories "$grupo" "$s_conf"
     reapeat_directory="NO"
     installation_accepted="NO"
-    declare -a directories_array=("$grupo" "$s_executable" "$s_master" "$s_extern" "$s_temp" "$s_rejected" "$s_processed" "$s_exit" "$s_conf")
+    declare -a directories_array=("$s_executable" "$s_master" "$s_extern" "$s_temp" "$s_rejected" "$s_processed" "$s_exit" "$s_conf" "$grupo")
     while [ "$installation_accepted" != "SI" ] || [ "$reapeat_directory" != "NO" ] #este ciclo deberia ir en una funcion
     do 
         reapeat_directory="NO"
         ask_subdirectories "$s_executable" "$s_master" "$s_extern" "$s_temp" "$s_rejected" "$s_processed" "$s_exit"
+        directories_array=("$s_executable" "$s_master" "$s_extern" "$s_temp" "$s_rejected" "$s_processed" "$s_exit" "$s_conf" "$grupo")
         print_details "$directories_array"
         read -p "¿Confirma la instalacion? (SI-NO): " installation_accepted
-        directories_array=("$grupo" "$s_executable" "$s_master" "$s_extern" "$s_temp" "$s_rejected" "$s_processed" "$s_exit" "$s_conf")
         validate_subdirectories "$directories_array" "$reapeat_directory"
     done
     new_directories=("$s_executable" "$s_master" "$s_extern" "$s_temp" "$s_rejected" "$s_processed" "$s_exit")
     save_configuration "$new_directories"
-    create_directories "$new_directories"
+    create_directories "${new_directories[@]}"
     unzip_files
     move_files "$s_executable"
     echo "La instalacion finalizo correctamente"
@@ -36,7 +36,7 @@ show_ini () {
     echo "    -Utilizar nombres repetidos
     -Utilizar nombres de palabras reservadas"
     echo ""
-    sleep 3    
+    sleep 1    
 }
 
 assign_default_subdirectories () {
@@ -154,16 +154,19 @@ create_initial_directories () {
     echo "Creando directorios iniciales"
     mkdir "$grupo"
     echo "Se creo directorio ($grupo)"
+    sleep 1
     mkdir "$grupo/$s_conf"
     echo "Se creo directorio ($grupo/$s_conf)"
+    sleep 1
     echo ""
 }
 
 create_directories () {
     echo "Paso 2: Creacion de los directorios"
-    for j in "${!new_directories[@]}"; do
-        mkdir -p GRUPO01/"${new_directories[j]}"
-        echo "Se creo directorio (GRUPO01/${new_directories[j]})"
+    arr=("$@")
+    for j in "${!arr[@]}"; do
+        mkdir -p GRUPO01/"${arr[j]}"
+        echo "Se creo directorio (GRUPO01/${arr[j]})"
         sleep 1         
     done
     echo ""
@@ -180,24 +183,24 @@ unzip_files () {
 move_files () {
     echo "Paso 4: Moviendo archivos"
 
-    sudo mv  "start.sh" "GRUPO01/$s_executable/start.sh"
-    echo "Moviendo start.sh GRUPO01//$s_executable/start.sh"
+    sudo mv  "start.sh" "GRUPO01/$1"
+    echo "Moviendo start.sh GRUPO01/$1"
     sleep 1
     
-    sudo mv  "stop.sh" "GRUPO01/$s_executable"
-    echo "Moviendo stop.sh GRUPO01/$s_executable"
+    sudo mv  "stop.sh" "GRUPO01/$1"
+    echo "Moviendo stop.sh GRUPO01/$1"
     sleep 1
 
-    sudo mv  "validaciones.sh" "GRUPO01/$s_executable"
-    echo "validaciones.sh GRUPO01/$s_executable"
+    sudo mv  "validaciones.sh" "GRUPO01/$1"
+    echo "validaciones.sh GRUPO01/$1"
     sleep 1
 
-    sudo mv  "process.sh" "GRUPO01/$s_executable"
-    echo "Moviendo process.sh GRUPO01/$s_executable"
+    sudo mv  "process.sh" "GRUPO01/$1"
+    echo "Moviendo process.sh GRUPO01/$1"
     sleep 1
 
-    sudo mv  "preprocess.sh" "GRUPO01/$s_executable"
-    echo "Moviendo preprocess.sh GRUPO01/$s_executable"
+    sudo mv  "preprocess.sh" "GRUPO01/$1"
+    echo "Moviendo preprocess.sh GRUPO01/$1"
     sleep 1
 
     echo "Archivos movidos"
@@ -221,11 +224,42 @@ check_installation () {
     check_directories "$directories_array" "$created_directories" "$missing_directories"
     if [ "${#missing_directories[@]}" -eq 0 ]; then
         print_details "$directories_array"
+        return
     else
         echo "Faltan los directorios:"
         printf '    %s\n' "${missing_directories[@]}"
         echo ""
     fi
+    
+    declare -i option_choose=-1
+    print_options "$option_choose"
+    if [ "$option_choose" -eq 0 ]; then
+        echo "Reanudando la instalacion"
+        create_directories "${missing_directories[@]}"
+        unzip_files
+        printf '    %s' "${directories_array[@]}"
+        move_files "${directories_array[0]}"
+        echo "La instalacion finalizo correctamente"
+        return
+    elif [ "$option_choose" -eq 1 ]; then
+        echo "Finalizo la instalacion"
+    elif [ "$option_choose" -eq 2 ]; then 
+        echo "Borrando archivos"
+        rm -r "GRUPO01"
+        sleep 1
+        echo "Archivos borrados, finalizo el instador"
+    else 
+        echo "Opcion invalida, finalizando instalacion" #podria hacer un bucle(?)
+    fi 
+}
+
+print_options () {
+    echo "[0] Para continuar con la instalacion"
+    echo "[1] Para finalizar instalacion"
+    echo "[2] Para eliminar archivos"
+    echo ""
+    read -p "Elija la opcion deseada: " option_choose
+    echo ""
 }
 
 read_conf_file () {
