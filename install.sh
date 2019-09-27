@@ -129,7 +129,7 @@ ask_subdirectories () {
     fi 
 }
 
-print_details () { #cambiar funcion, que maneje un array
+print_details () {
     echo ""
     echo "INFORMACION"
     echo ""
@@ -279,7 +279,6 @@ get_created_directories () {
 }
 
 check_directories () {
-    #missing_directories=$(${config_directories[@]} ${created_directories[@]} | tr ' ' '\n' | sort | uniq -u) #magic
     for i in "${!directories_array[@]}"; do
         containsElement "${directories_array[i]}" "${created_directories[@]}"
         declare -i exists=$?
