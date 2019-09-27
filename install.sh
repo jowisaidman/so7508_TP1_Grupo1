@@ -111,7 +111,7 @@ ask_subdirectories () {
     fi 
 }
 
-print_details () {
+print_details () { #cambiar funcion, que maneje un array
     echo ""
     echo "INFORMACION"
     echo ""
@@ -194,19 +194,65 @@ check_installation () {
     else
         echo "Bienvenido, el modo reparacion a comenzado"
     fi
+    echo ""
 
     installation_is_ok=0 #0=false; 1=true
-    check_directories
+    declare -a config_directories=()
+    declare -a created_directories=()
+    declare -a missing_directories=()
+    read_conf_file "$config_directories"
+    get_created_directories "$created_directories"
+    check_directories "$config_directories" "$created_directories" "$missing_directories"
+    if [ "${#missing_directories[@]}" -eq 0 ]; then
+        echo "Todo en orden"
+    else
+        echo "Faltan los directorios:"
+        printf '    %s\n' "${missing_directories[@]}"
+        echo ""
+    fi
+}
+
+read_conf_file () {
+    input="$PWD/GRUPO01/conf/config.txt"
+    while IFS= read -r line
+    do
+      config_directories+=("$line/")
+    done < "$input"
+}
+
+get_created_directories () {
+    cd GRUPO01
+    for d in */ ; do
+        created_directories+=("$d")
+    done
+    cd ..
 }
 
 check_directories () {
-    cd GRUPO01
-    declare -i count=$(find $PWD -type d | wc -l)
-    if [ "$count" -eq 9 ]; then
-        installation_is_ok=1
-    else
-        echo "Se detecto un error en la instalacion, comezara el proceso de reparacion"
-    fi
+    #printf '%s ' "${config_directories[@]}"
+    #echo ""
+    #printf '%s ' "${created_directories[@]}"
+    #echo ""
+    #missing_directories=$(${config_directories[@]} ${created_directories[@]} | tr ' ' '\n' | sort | uniq -u) #magic
+    for i in "${!config_directories[@]}"; do
+        containsElement "${config_directories[i]}" "${created_directories[@]}"
+        declare -i exists=$?
+        if [ "$exists" -eq 0 ]; then
+            missing_directories+=("${config_directories[i]}")
+            echo "ATENCION: El directorio ${config_directories[i]} NO existe"
+        else
+            echo "El directorio ${config_directories[i]} existe"
+        fi
+        sleep 1
+    done
+    echo ""
+}
+
+containsElement () {
+  local e match="$1"
+  shift
+  for e; do [[ "$e" == "$match" ]] && return 1; done
+  return 0
 }
 
 main 
