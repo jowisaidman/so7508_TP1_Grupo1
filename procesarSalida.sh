@@ -47,6 +47,38 @@ do
 	fi
 
     #Grabar el cierre de lote
+    cd ..
+    cd ./$path_procesados
+
+    tipoOperacion=`echo "$trailer" | cut -d ',' -f1`
+    descripcionOperacion=`echo "$trailer" | cut -d ',' -f2`
+    totalTrx=`echo "$trailer" | cut -d ',' -f3`
+    fechaCierreLote=`echo "$trailer" | cut -d ',' -f4`
+    anio=`echo "$trailer" | cut -d ',' -f5`
+    fechaHora=`echo "$trailer" | cut -d ',' -f6`
+    traceNumber=`echo "$trailer" | cut -d ',' -f11`
+    codigoISO=`echo "$trailer" | cut -d ',' -f12`
+    retrievalNumber=`echo "$trailer" | cut -d ',' -f13`
+    msjHost=`echo "$trailer" | cut -d ',' -f18`
+
+    contenidoMsjHost=`echo "$msjHost" | cut -d '>' -f2`
+
+    numeroBatch=${contenidoMsjHost:0:3}
+    cantidadCompras=${contenidoMsjHost:3:4}
+    montoCompras=${contenidoMsjHost:7:12}
+    cantidadDevoluciones=${contenidoMsjHost:19:4}
+    montoDevoluciones=${contenidoMsjHost:23:12}
+    cantidadAnulaciones=${contenidoMsjHost:35:4}
+    montoAnulaciones=${contenidoMsjHost:39:12}
+
+    parseados=$numeroBatch,$cantidadCompras,$montoCompras,$cantidadDevoluciones,$montoDevoluciones,$cantidadAnulaciones,$montoAnulaciones
+
+    echo $tipoOperacion,$descripcionOperacion,$totalTrx,$fechaCierreLote,$anio,$fechaHora,$traceNumber,$codigoISO,$retrievalNumber,$msjHost,$parseados >> Cierre_de_Lote.csv
+
     #Procesar las transacciones
+
+    cd ..
+    cd ./$path_aceptados
+
 done
 
