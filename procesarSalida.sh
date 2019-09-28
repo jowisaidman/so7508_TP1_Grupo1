@@ -1,4 +1,4 @@
-source ./helpers.hs
+source ./helpers.sh
 
 #TODO: Cambiar para que tome los paths configurados.
 path_aceptados='Aceptados'
