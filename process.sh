@@ -14,6 +14,6 @@ while true; do
     bash preprocess.sh
 
     count=$((count + increment))
-    sleep 1
+    sleep 10
 done
 )& #Lo mando a bg (background) -> pasa a ser un proceso deamon

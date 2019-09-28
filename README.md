@@ -3,8 +3,11 @@
 Para iniciar la instalacion:
     sudo bash install.sh
 
+Para inicializar el sistema:
+    . initialize.sh
+    
 Para iniciar la ejecucion: 
-    bash start.sh
+    . start.sh
 
 Para frenar la ejecucion:
-    bash stop.sh
+    . stop.sh

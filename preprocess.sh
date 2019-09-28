@@ -1,17 +1,12 @@
-#Parametros:
-#1) Nombre del proceso/archivo desde donde se loguea
-#2) Mensaje
-logInfo() {
-    echo `date` - $USERNAME - $1 - INF - $2
-}
+source ./helpers.sh
 
 #TODO: Cambiar para que tome los paths configurados.
-path_novedades='Novedades'
-path_aceptados='Aceptados'
-path_rechazados='Rechazados'
-path_procesados='Procesados'
+path_novedades=$novedades
+path_aceptados=$aceptados
+path_rechazados=$rechazados
+path_procesados=$procesados
 
-cd ./$path_novedades
+cd ../$path_novedades
 
 logInfo $0 "Comienza el preprocesamiento."
 
