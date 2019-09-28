@@ -11,7 +11,8 @@ if [ $? -ne 0 ]; then
   bash ./process.sh
 else
   echo "$(date +'%d/%m/%Y %T') No se puede correr el proceso, ya que hay otro corriendo"
-  exit
+  exec 1>&6 6>&-
+  return 1
 fi
-
+exec 1>&6 6>&-
 
