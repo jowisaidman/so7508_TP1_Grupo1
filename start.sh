@@ -1,8 +1,12 @@
 #!/bin/bash
 source ./validaciones.sh
 
+echo $$
+
 exec 6>&1 #Guardo el stdout default
 exec >> "start.log"
+
+echo $$
 
 isRunning "process.sh"   
 

@@ -2,6 +2,8 @@
 
 repair_installation=$1
 
+declare -a DIRECTORIOSREALES=("bin" "maestros" "novedades" "aceptados" "rechazados" "procesados" "salida" )
+
 main () {
     if [ -d "GRUPO01/" ]; then
         check_installation
@@ -55,12 +57,12 @@ save_configuration () {
     echo "Guardando configuracion de los directorios"
     for j in "${!new_directories[@]}"; do
         if [ ! -e "GRUPO01/conf/conf.txt" ]; then
-            echo ${new_directories[j]} >> "GRUPO01/conf/config.txt"
+            echo ${DIRECTORIOSREALES[j]},${new_directories[j]} >> "GRUPO01/conf/config.txt"
         else
-            echo ${new_directories[j]} > "GRUPO01/conf/config.txt"
+            echo ${DIRECTORIOSREALES[j]},${new_directories[j]} > "GRUPO01/conf/config.txt"
         fi
     done
-    echo "conf" >> "GRUPO01/conf/config.txt"
+    echo "conf,conf" >> "GRUPO01/conf/config.txt"
     echo "Configuracion guardada"
     echo ""    
     sleep 1
@@ -183,25 +185,12 @@ unzip_files () {
 move_files () {
     echo "Paso 4: Moviendo archivos"
 
-    sudo mv  "start.sh" "GRUPO01/$1"
-    echo "Moviendo start.sh GRUPO01/$1"
-    sleep 1
-    
-    sudo mv  "stop.sh" "GRUPO01/$1"
-    echo "Moviendo stop.sh GRUPO01/$1"
-    sleep 1
-
-    sudo mv  "validaciones.sh" "GRUPO01/$1"
-    echo "validaciones.sh GRUPO01/$1"
-    sleep 1
-
-    sudo mv  "process.sh" "GRUPO01/$1"
-    echo "Moviendo process.sh GRUPO01/$1"
-    sleep 1
-
-    sudo mv  "preprocess.sh" "GRUPO01/$1"
-    echo "Moviendo preprocess.sh GRUPO01/$1"
-    sleep 1
+    for i in $(ls -C1 | grep "^[^.]*.sh" | grep -v "install.sh")
+    do
+        sudo mv  $i "GRUPO01/$1"
+        echo "Moviendo $i GRUPO01/$1"
+        sleep 1
+    done
 
     echo "Archivos movidos"
     echo ""
@@ -264,9 +253,8 @@ print_options () {
 
 read_conf_file () {
     input="$PWD/GRUPO01/conf/config.txt"
-    while IFS= read -r line
-    do
-      directories_array+=("$line")
+    while IFS=, read -r a b ; do
+      directories_array+=("$b")
     done < "$input"
 }
 

@@ -1,9 +1,5 @@
 #! /bin/bash
-
-
-logInfo() {
-    echo `date` - $USERNAME - $1 - INF - $2
-}
+source ./helpers.sh
 
 logInfo "Proceso" $$
 
@@ -92,23 +88,25 @@ logInfo "Comienzo" "Me paro en la raiz"
 
 if [ -z $init ];
   then 
+    #Leo el archivo y setteo variables de entorno
     readAndExport conf/prueba.txt
+
     if [ $? -eq "0" ];
-    then
-      logInfo "Directories and export" "Las variables se iniciaron correctamente y los directorios estan todos correctos"
-    else
-      logInfo "Directories and export" "El sistema no fue inicializado, se encontraron errores con los directorios, observar el archivo initialize.log"
-      cd $bin/
-      exec 1>&6 6>&-
-      return 1
+      then
+        logInfo "Directories and export" "Las variables se iniciaron correctamente y los directorios estan todos correctos"
+      else
+        logInfo "Directories and export" "El sistema no fue inicializado, se encontraron errores con los directorios, observar el archivo initialize.log"
+        cd $bin/ #Vuelvo a la carpeta de ejecutables
+        exec 1>&6 6>&- #Retorno el outuput a la terminal
+        return 1
     fi
-    cd $bin/
-    evaluatePermisionsAndFixit
+    cd $bin/ #Vuelvo a la carpeta de ejecutables
+    evaluatePermisionsAndFixit #Evaluo los permisos y los arreglo
     logInfo "Permisos" "Los permisos fueron todos setteados correctamente"
-    exec 1>&6 6>&-
+    exec 1>&6 6>&- #Retorno el outuput a la terminal
     echo "El sistema se inicializo correctamente"
-    export init="1"
-    . start.sh
+    export init="1" #Setteo que la inicializacion fue correcta
+    . start.sh #Ejecuto el proceso
   else
     evaluateDirectories
     if [ $? -eq "0" ];
