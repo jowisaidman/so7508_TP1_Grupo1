@@ -89,7 +89,7 @@ logInfo "Comienzo" "Me paro en la raiz"
 if [ -z $init ];
   then 
     #Leo el archivo y setteo variables de entorno
-    readAndExport conf/prueba.txt
+    readAndExport conf/config.txt
 
     if [ $? -eq "0" ];
       then
