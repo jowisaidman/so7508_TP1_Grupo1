@@ -1,0 +1,3 @@
+Lote_1.csv -> Cumple con el nombre pero esta vacio. Rechazado.
+test.csv -> No cumple con el nombre. Rechazado.
+Lote_AA.csv -> Cumple con la primera parte del nombre pero tiene letras en la segunda. Rechazado.
