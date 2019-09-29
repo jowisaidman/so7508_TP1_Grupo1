@@ -31,8 +31,6 @@ show_ini () {
     sleep 1    
 }
 
-
-
 assign_default_subdirectories () {
     grupo="GRUPO01"
     s_executable="bin"
@@ -89,7 +87,6 @@ get_subdirectories () {
     done
 }
 
-
 ask_subdirectories () {
     zero=0
     showOutputs "Estado de instalacion" "Paso 1: Seleccionar directorios" 
@@ -138,9 +135,7 @@ ask_subdirectories () {
 }
 
 print_details () {
-
     echo ""
-
     echo "INFORMACION"
     echo ""
     echo "  TP SO7508 2º Cuatrimestre 2019. Copyright © Grupo 01"
@@ -209,14 +204,7 @@ move_files () {
 }
 
 check_installation () {
-    if [ ${#repair_installation} -eq 0 ]; then #solo detecta si ingresaron un parametro no -r. (probe comparar contra -r y daba mal)
-        echo "Bienvenido, detectamos que el programa ya esta instalado, se verificaran los datos de instalacion"
-        logInfo "Estado de instalacion" "Verificando instalacion" "GRUPO01/conf/log.txt"   
-    else
-        echo "Bienvenido, el modo reparacion a comenzado"
-        logInfo "Estado de instalacion" "Reparando instalacion" "GRUPO01/conf/log.txt"
-    fi
-    echo ""
+    print_ini_reparation
 
     installation_is_ok=0 #0=false; 1=true
     declare -a directories_array=()
@@ -227,34 +215,63 @@ check_installation () {
     check_directories "$directories_array" "$created_directories" "$missing_directories"
     if [ "${#missing_directories[@]}" -eq 0 ]; then
         print_details "$directories_array"
+        showOutputs "Estado de instalacion" "La instalacion finalizo correctamente"
         return
     else
         showOutputs "Estado de instalacion" "Faltan los directorios:"
         ( IFS=$'    \n'; showOutputs "Estado de instalacion" "${missing_directories[*]}" )
         echo ""
     fi
-    
-    declare -i option_choose=-1
-    print_options "$option_choose"
-    if [ "$option_choose" -eq 0 ]; then
-        showOutputs "Estado de instalacion" "Reanudando la instalacion"
-        create_directories "${missing_directories[@]}"
-        unzip_files
-        printf '    %s' "${directories_array[@]}"
-        move_files "${directories_array[0]}"
-        showOutputs "Estado de instalacion" "La instalacion finalizo correctamente"
-        return
-    elif [ "$option_choose" -eq 1 ]; then
-        showOutputs "Estado de instalacion" "Finalizo la instalacion"
-    elif [ "$option_choose" -eq 2 ]; then 
-        showOutputs "Estado de instalacion" "Borrando archivos"
-        rm -r "GRUPO01"
-        sleep 1
-        showOutputs "Estado de instalacion" "Archivos borrados, finalizo el instador"
-    else 
-        echo "Opcion invalida, finalizando instalacion" #podria hacer un bucle(?)
-        logInfo "Estado de instalacion" "Finalizo la instalacion" "GRUPO01/conf/log.txt"
-    fi 
+
+    execute_reparation "$missing_directories" "$directories_array"
+}
+
+print_ini_reparation () {
+    if [ ${#repair_installation} -eq 0 ]; then
+        echo "Bienvenido, detectamos que el programa ya esta instalado, se verificaran los datos de instalacion"
+        logInfo "Estado de instalacion" "Verificando instalacion" "GRUPO01/conf/log.txt"   
+    else
+        echo "Bienvenido, el modo reparacion a comenzado"
+        logInfo "Estado de instalacion" "Reparando instalacion" "GRUPO01/conf/log.txt"
+    fi
+    echo ""    
+}
+
+execute_reparation () {
+    finish_reparation="NO"
+    while [ "$finish_reparation" != "SI" ]
+    do
+        option_choose="-1"
+        print_options "$option_choose"
+        if [ "$option_choose" = "0" ]; then
+            resume_instation "$missing_directories" "$directories_array"
+            finish_reparation="SI"
+        elif [ "$option_choose" = "1" ]; then
+            showOutputs "Estado de instalacion" "Finalizo la instalacion"
+            finish_reparation="SI"
+        elif [ "$option_choose" = "2" ]; then 
+            delete_instalation
+            finish_reparation="SI"
+        else 
+            echo "Opcion invalida, finalizando instalacion"
+        fi
+    done 
+}
+
+resume_instation () {
+    showOutputs "Estado de instalacion" "Reanudando la instalacion"
+    create_directories "${missing_directories[@]}"
+    unzip_files
+    ( IFS=$'    \n'; showOutputs "Estado de instalacion" "${directories_array[*]}" )
+    move_files "${directories_array[0]}"
+    showOutputs "Estado de instalacion" "La instalacion finalizo correctamente"    
+}
+
+delete_instalation () {
+    showOutputs "Estado de instalacion" "Borrando archivos"
+    rm -r "GRUPO01"
+    sleep 1
+    echo "Archivos borrados, finalizo el instador"    
 }
 
 print_options () {
