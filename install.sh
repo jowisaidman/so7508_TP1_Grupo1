@@ -12,18 +12,8 @@ main () {
     show_ini 
     assign_default_subdirectories
     create_initial_directories "$grupo" "$s_conf"
-    reapeat_directory="NO"
-    installation_accepted="NO"
-    declare -a directories_array=("$s_executable" "$s_master" "$s_extern" "$s_temp" "$s_rejected" "$s_processed" "$s_exit" "$s_conf" "$grupo")
-    while [ "$installation_accepted" != "SI" ] || [ "$reapeat_directory" != "NO" ] #este ciclo deberia ir en una funcion
-    do 
-        reapeat_directory="NO"
-        ask_subdirectories "$s_executable" "$s_master" "$s_extern" "$s_temp" "$s_rejected" "$s_processed" "$s_exit"
-        directories_array=("$s_executable" "$s_master" "$s_extern" "$s_temp" "$s_rejected" "$s_processed" "$s_exit" "$s_conf" "$grupo")
-        print_details "$directories_array"
-        read -p "¿Confirma la instalacion? (SI-NO): " installation_accepted
-        validate_subdirectories "$directories_array" "$reapeat_directory"
-    done
+    declare -a dir=("$s_executable" "$s_master" "$s_extern" "$s_temp" "$s_rejected" "$s_processed" "$s_exit" "$s_conf" "$grupo")
+    get_subdirectories "$dir" "$s_conf" "$grupo"
     new_directories=("$s_executable" "$s_master" "$s_extern" "$s_temp" "$s_rejected" "$s_processed" "$s_exit")
     save_configuration "$new_directories"
     create_directories "${new_directories[@]}"
@@ -40,6 +30,8 @@ show_ini () {
     echo ""
     sleep 1    
 }
+
+
 
 assign_default_subdirectories () {
     grupo="GRUPO01"
@@ -69,11 +61,11 @@ save_configuration () {
 }
 
 validate_subdirectories () {
-    for i in "${!directories_array[@]}"; do
-        for j in "${!directories_array[@]}"; do
-            if [ "${directories_array[i]}" == "${directories_array[j]}" ] && [ "$i" != "$j" ]; then
+    for i in "${!dir[@]}"; do
+        for j in "${!dir[@]}"; do
+            if [ "${dir[i]}" == "${dir[j]}" ] && [ "$i" != "$j" ]; then
                 echo ""
-                showOutputs "Estado de instalacion" "ERROR: El directorio (${directories_array[j]}) esta duplicado!"
+                showOutputs "Estado de instalacion" "ERROR: El directorio (${dir[j]}) esta duplicado!"
                 echo ""
                 reapeat_directory="SI"
                 return
@@ -83,7 +75,21 @@ validate_subdirectories () {
     echo ""
 }
 
-#entre parentesis es el valor por defecto, si se toca enter queda el valor por defecto
+get_subdirectories () {
+    reapeat_directory="NO"
+    installation_accepted="NO"
+    while [ "$installation_accepted" != "SI" ] || [ "$reapeat_directory" != "NO" ]
+    do 
+        reapeat_directory="NO"
+        ask_subdirectories "${dir[0]}" "${dir[1]}" "${dir[2]}" "${dir[3]}" "${dir[4]}" "${dir[5]}" "${dir[6]}"
+        dir=("${dir[0]}" "${dir[1]}" "${dir[2]}" "${dir[3]}" "${dir[4]}" "${dir[5]}" "${dir[6]}" "$s_conf" "$grupo")
+        print_details "$dir"
+        read -p "¿Confirma la instalacion? (SI-NO): " installation_accepted
+        validate_subdirectories "$dir" "$reapeat_directory"
+    done
+}
+
+
 ask_subdirectories () {
     zero=0
     showOutputs "Estado de instalacion" "Paso 1: Seleccionar directorios" 
@@ -141,13 +147,13 @@ print_details () {
     echo "  Directorio padre: GRUPO01"
     echo "  Directorio de configuración:  /conf"
     echo "  Archivos de log: /conf/log"
-    echo "  Libreria de ejecutables: /${directories_array[0]}"
-    echo "  Repositorio de maestros: /${directories_array[1]}"
-    echo "  Directorio para las novedades… /${directories_array[2]}"
-    echo "  Directorio para los archivos aceptados… /${directories_array[3]}"
-    echo "  Directorio para los archivos rechazados… /${directories_array[4]}"
-    echo "  Directorio para Archivos procesados… /${directories_array[5]}"
-    echo "  Directorio para los archivos de salida… /${directories_array[6]}"
+    echo "  Libreria de ejecutables: /${dir[0]}"
+    echo "  Repositorio de maestros: /${dir[1]}"
+    echo "  Directorio para las novedades… /${dir[2]}"
+    echo "  Directorio para los archivos aceptados… /${dir[3]}"
+    echo "  Directorio para los archivos rechazados… /${dir[4]}"
+    echo "  Directorio para Archivos procesados… /${dir[5]}"
+    echo "  Directorio para los archivos de salida… /${dir[6]}"
     echo ""
     echo "ATENCION: Los logs del sistema se depositan en /conf/log"
     echo ""
