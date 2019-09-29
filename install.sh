@@ -1,5 +1,5 @@
 #!/bin/bash
-
+source ./helpers.sh
 repair_installation=$1
 
 declare -a DIRECTORIOSREALES=("bin" "maestros" "novedades" "aceptados" "rechazados" "procesados" "salida" )
@@ -29,7 +29,7 @@ main () {
     create_directories "${new_directories[@]}"
     unzip_files
     move_files "$s_executable"
-    echo "La instalacion finalizo correctamente"
+    showOutputs "Estado de instalacion" "La instalacion finalizo correctamente"
 }
 
 show_ini () {
@@ -54,7 +54,7 @@ assign_default_subdirectories () {
 }
 
 save_configuration () {
-    echo "Guardando configuracion de los directorios"
+    showOutputs "Estado de instalacion" "Guardando configuracion de los directorios"
     for j in "${!new_directories[@]}"; do
         if [ ! -e "GRUPO01/conf/conf.txt" ]; then
             echo ${DIRECTORIOSREALES[j]},${new_directories[j]} >> "GRUPO01/conf/config.txt"
@@ -63,7 +63,7 @@ save_configuration () {
         fi
     done
     echo "conf,conf" >> "GRUPO01/conf/config.txt"
-    echo "Configuracion guardada"
+    showOutputs "Estado de instalacion" "Configuracion guardada"
     echo ""    
     sleep 1
 }
@@ -72,9 +72,9 @@ validate_subdirectories () {
     for i in "${!directories_array[@]}"; do
         for j in "${!directories_array[@]}"; do
             if [ "${directories_array[i]}" == "${directories_array[j]}" ] && [ "$i" != "$j" ]; then
-                echo
-                echo "ERROR: El directorio (${directories_array[j]}) esta duplicado!"
-                echo
+                echo ""
+                showOutputs "Estado de instalacion" "ERROR: El directorio (${directories_array[j]}) esta duplicado!"
+                echo ""
                 reapeat_directory="SI"
                 return
             fi
@@ -86,7 +86,7 @@ validate_subdirectories () {
 #entre parentesis es el valor por defecto, si se toca enter queda el valor por defecto
 ask_subdirectories () {
     zero=0
-    echo "Paso 1: Seleccionar directorios"
+    showOutputs "Estado de instalacion" "Paso 1: Seleccionar directorios" 
     echo "ATENCION: Para dejar el valor mostrado entre parentesis presione enter"
     read -p "Indique el nombre para el directorio de ejecutables ($s_executable): " temp_var
     lenght=${#temp_var}
@@ -132,7 +132,9 @@ ask_subdirectories () {
 }
 
 print_details () {
+
     echo ""
+
     echo "INFORMACION"
     echo ""
     echo "  TP SO7508 2º Cuatrimestre 2019. Copyright © Grupo 01"
@@ -160,47 +162,53 @@ create_initial_directories () {
     mkdir "$grupo/$s_conf"
     echo "Se creo directorio ($grupo/$s_conf)"
     sleep 1
+    touch "GRUPO01/conf/log.txt"
+    showOutputs "Estado de intalacion" "Se creo el archivo log.txt"
+    logInfo "Estado de instalacion" "La instalacion comenzo" "GRUPO01/conf/log.txt"
+    logInfo "Estado de instalacion" "Se crearon los directorios inciales GRUPO01 y conf" "GRUPO01/conf/log.txt"    
+    sleep 1
     echo ""
 }
 
 create_directories () {
-    echo "Paso 2: Creacion de los directorios"
+    showOutputs "Estado de instalacion" "Paso 2: Creacion de los directorios" "GRUPO01/conf/log.txt" 
     arr=("$@")
     for j in "${!arr[@]}"; do
         mkdir -p GRUPO01/"${arr[j]}"
-        echo "Se creo directorio (GRUPO01/${arr[j]})"
+        showOutputs "Estado de instalacion" "Se creo directorio (GRUPO01/${arr[j]})"
         sleep 1         
     done
     echo ""
 }
 
 unzip_files () {
-    echo "Paso 3: Descomprimiendo archivos"
+    showOutputs "Estado de instalacion" "Paso 3: Descomprimiendo archivos"
     unzip files.zip
-    echo "Archivos descomprimidos"
+    showOutputs "Estado de instalacion" "Archivos descomprimidos"
     echo ""
     sleep 2
 }
 
 move_files () {
-    echo "Paso 4: Moviendo archivos"
+    showOutputs "Estado de instalacion" "Paso 4: Moviendo archivos"
 
     for i in $(ls -C1 | grep "^[^.]*.sh" | grep -v "install.sh")
     do
         sudo mv  $i "GRUPO01/$1"
-        echo "Moviendo $i GRUPO01/$1"
+        showOutputs "Estado de instalacion" "Moviendo $i GRUPO01/$1"
         sleep 1
     done
-
-    echo "Archivos movidos"
+    showOutputs "Estado de instalacion" "Archivos movidos"
     echo ""
 }
 
 check_installation () {
     if [ ${#repair_installation} -eq 0 ]; then #solo detecta si ingresaron un parametro no -r. (probe comparar contra -r y daba mal)
         echo "Bienvenido, detectamos que el programa ya esta instalado, se verificaran los datos de instalacion"
+        logInfo "Estado de instalacion" "Verificando instalacion" "GRUPO01/conf/log.txt"   
     else
         echo "Bienvenido, el modo reparacion a comenzado"
+        logInfo "Estado de instalacion" "Reparando instalacion" "GRUPO01/conf/log.txt"
     fi
     echo ""
 
@@ -215,30 +223,31 @@ check_installation () {
         print_details "$directories_array"
         return
     else
-        echo "Faltan los directorios:"
-        printf '    %s\n' "${missing_directories[@]}"
+        showOutputs "Estado de instalacion" "Faltan los directorios:"
+        ( IFS=$'    \n'; showOutputs "Estado de instalacion" "${missing_directories[*]}" )
         echo ""
     fi
     
     declare -i option_choose=-1
     print_options "$option_choose"
     if [ "$option_choose" -eq 0 ]; then
-        echo "Reanudando la instalacion"
+        showOutputs "Estado de instalacion" "Reanudando la instalacion"
         create_directories "${missing_directories[@]}"
         unzip_files
         printf '    %s' "${directories_array[@]}"
         move_files "${directories_array[0]}"
-        echo "La instalacion finalizo correctamente"
+        showOutputs "Estado de instalacion" "La instalacion finalizo correctamente"
         return
     elif [ "$option_choose" -eq 1 ]; then
-        echo "Finalizo la instalacion"
+        showOutputs "Estado de instalacion" "Finalizo la instalacion"
     elif [ "$option_choose" -eq 2 ]; then 
-        echo "Borrando archivos"
+        showOutputs "Estado de instalacion" "Borrando archivos"
         rm -r "GRUPO01"
         sleep 1
-        echo "Archivos borrados, finalizo el instador"
+        showOutputs "Estado de instalacion" "Archivos borrados, finalizo el instador"
     else 
         echo "Opcion invalida, finalizando instalacion" #podria hacer un bucle(?)
+        logInfo "Estado de instalacion" "Finalizo la instalacion" "GRUPO01/conf/log.txt"
     fi 
 }
 
@@ -272,9 +281,9 @@ check_directories () {
         declare -i exists=$?
         if [ "$exists" -eq 0 ]; then
             missing_directories+=("${directories_array[i]}")
-            echo "ATENCION: El directorio ${directories_array[i]} NO existe"
+            showOutputs "Estado de instalacion" "ATENCION: El directorio ${directories_array[i]} NO existe"
         else
-            echo "El directorio ${directories_array[i]} existe"
+            showOutputs "Estado de instalacion" "El directorio ${directories_array[i]} existe"
         fi
         sleep 1
     done
@@ -286,6 +295,11 @@ containsElement () {
   shift
   for e; do [[ "$e" == "$match" ]] && return 1; done
   return 0
+}
+
+showOutputs () {
+    logInfo "$1" "$2"
+    logInfo "$1" "$2" "GRUPO01/conf/log.txt"    
 }
 
 main 
