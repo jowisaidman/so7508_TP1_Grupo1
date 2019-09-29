@@ -1,9 +1,9 @@
 source ./helpers.sh
 
 #TODO: Cambiar para que tome los paths configurados.
-path_aceptados='Aceptados'
-path_rechazados='Rechazados'
-path_procesados='Procesados'
+path_aceptados=$aceptados
+path_rechazados=$rechazados
+path_procesados=$procesados
 
 #Se debe loguear correctamente cada paso
 
@@ -96,7 +96,7 @@ do
         if [ `echo "$msjHost" | grep '[a-zA-Z]' -c` == 0 ];
         then
             echo "No tiene mensaje host"
-            #TODO: Falta crear el msjHost a partir del campo codigoISO
+            msjHost=$(cat codigos.csv | grep "^$codigoISO.*" | sed "s-\([^,]*\)\,\([^,]*\),\([^,]*\)-\2\|\ \3-g")
         else
             echo "Tiene mensaje host y es $msjHost"
         fi
