@@ -1,0 +1,6 @@
+bin,bin
+maestros,maestros
+asdasdArchivodañodo
+procesados,procesados
+salida,salida
+conf,conf
