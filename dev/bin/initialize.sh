@@ -2,11 +2,7 @@
 source ./helpers.sh
 
 logInfo "Proceso" $$
-
-exec 6>&1 #Guardo el stdout default
-exec > "initialize.log"
-
-logInfo "Proceso" $$
+logInfo "Proceso" $$ "initialize.log"
 
 function readAndExport() {
   declare -i errores=0
@@ -16,7 +12,7 @@ function readAndExport() {
         then return 1
       fi
       export $a=$b
-      logInfo $$ "La variable '$a' fue setteada con valor '$b'"
+      logInfo "Variables Ambiente" "La variable '$a' fue setteada con valor '$b'" "initialize.log"
   done < $1
 }
 
@@ -25,13 +21,13 @@ function evaluateDirectory() {
     then
       if [ -d $1/ ];
       then
-      logInfo $$ "Existe el directorio $1"
+      logInfo "Evaluando directorio" "Existe el directorio $1" "initialize.log"
       else
-      logInfo $$ "No existe  el directorio $1, explicar"
+      logInfo "Evaluando directorio" "No existe  el directorio $1, volver a correr el instalador para arreglar el problema"
       return 1
       fi
     else
-      logInfo $$ "Variable no setteada"
+      logInfo "Evaluando directorio" "Variable no setteada" "initialize.log"
       return 1
   fi 
 }
@@ -77,14 +73,14 @@ function evaluatePermisionsAndFixit() {
   for i in $(ls -C1 | grep "^[^.]*.sh")
   do
   if [ -w $i ] && [ -x $i ];
-  then logInfo "Permisos" "El archivo $1 tiene los permisos correctos"
+  then logInfo "Permisos" "El archivo $1 tiene los permisos correctos" "initialize.log"
   else $(chmod +wx $i)
   fi
   done
 }
 
 cd ..
-logInfo "Comienzo" "Me paro en la raiz"
+logInfo "Comienzo" "Me paro en la raiz" "initialize.log"
 
 if [ -z $init ];
   then 
@@ -93,36 +89,32 @@ if [ -z $init ];
 
     if [ $? -eq "0" ];
       then
-        logInfo "Directories and export" "Las variables se iniciaron correctamente y los directorios estan todos correctos"
+        logInfo "Directories and export" "Las variables se iniciaron correctamente y los directorios estan todos correctos" "initialize.log"
       else
         logInfo "Directories and export" "El sistema no fue inicializado, se encontraron errores con los directorios, observar el archivo initialize.log"
         cd $bin/ #Vuelvo a la carpeta de ejecutables
-        exec 1>&6 6>&- #Retorno el outuput a la terminal
         return 1
     fi
     cd $bin/ #Vuelvo a la carpeta de ejecutables
     evaluatePermisionsAndFixit #Evaluo los permisos y los arreglo
-    logInfo "Permisos" "Los permisos fueron todos setteados correctamente"
-    exec 1>&6 6>&- #Retorno el outuput a la terminal
-    echo "El sistema se inicializo correctamente"
+    logInfo "Permisos" "Los permisos fueron todos setteados correctamente" "initialize.log"
+    logInfo "Inicializacion" "El sistema se inicializo correctamente" "initialize.log"
     export init="1" #Setteo que la inicializacion fue correcta
     . start.sh #Ejecuto el proceso
   else
     evaluateDirectories
     if [ $? -eq "0" ];
     then
-      logInfo "Directories" "El sistema ya estaba incializado y los directorios estan todos correctos"
+      logInfo "Directories" "El sistema ya estaba incializado y los directorios estan todos correctos" "initialize.log"
     else
       logInfo "Directories" "El sistema ya estaba incializado y se encontraron errores con los directorios, observar el archivo initialize.log, se reinicializa el sistema"
       cd $bin/
       export init=
-      . initialize.sh
-      exec 1>&6 6>&-
+      . initialize.sh #Se reinicializa
       return 1
     fi
     cd $bin/
     evaluatePermisionsAndFixit
-    logInfo "Permisos" "Los permisos fueron todos setteados correctamente"
-    exec 1>&6 6>&-
-    echo "El sistema esta inicializado correctamente"
+    logInfo "Permisos" "Los permisos fueron todos setteados correctamente" "initialize.log"
+    logInfo "Inicializacion" "El sistema esta inicializado correctamente"
 fi
