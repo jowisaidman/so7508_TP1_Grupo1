@@ -1,8 +1,8 @@
 #! /bin/bash
 source ./helpers.sh
 
-logInfo "Proceso" $$
-logInfo "Proceso" $$ "initialize.log"
+logInfo "Proceso" "Id proceso: $$"
+logInfo "Proceso" "Id proceso: $$" "initialize.log"
 
 function readAndExport() {
   declare -i errores=0
