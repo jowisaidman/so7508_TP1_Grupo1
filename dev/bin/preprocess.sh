@@ -13,17 +13,20 @@ cd ../$path_novedades
 logInfo $0 "Comienza el preprocesamiento." "../conf/logs/process.log"
 
 #Lista de todos los archivos del formato Lote_XX.csv
-archivos_procesables=`ls | grep 'Lote_[0-9][0-9]\?\.csv'`
+archivos_procesables=`ls | grep '^Lote_[0-9][0-9]\?\.csv'`
 
 #Lista de todos los archivos que no respetan el formato de nombre.
-archivos_no_procesables=`ls | grep -v 'Lote_[0-9][0-9]\?\.csv'`
+archivos_no_procesables=`ls | grep -v '^Lote_[0-9][0-9]\?\.csv'`
 
 #Rechazo los archivos de nombre invalido.
+IFS_DEFAULT=$IFS
+IFS=$'\n' # para que el "for" separe por linea
 for i in $archivos_no_procesables
 do
     logInfo $0 "El archivo $i no tiene un nombre valido." "../conf/logs/process.log"
     mv $i ../$path_rechazados
 done
+IFS=$IFS_DEFAULT
 
 #Preproceso los archivos con nombre valido.
 for i in $archivos_procesables
