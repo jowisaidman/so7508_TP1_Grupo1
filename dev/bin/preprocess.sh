@@ -1,6 +1,5 @@
 source ./helpers.sh
 
-#TODO: Cambiar para que tome los paths configurados.
 path_novedades=$novedades
 path_aceptados=$aceptados
 path_rechazados=$rechazados
