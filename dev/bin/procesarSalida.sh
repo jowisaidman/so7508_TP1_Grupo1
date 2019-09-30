@@ -15,7 +15,7 @@ for i in `ls`
 do
     logInfo $0 "Procesando el archivo $i"
 
-    contenido=`more $i`
+    contenido=`cat $i`
 
     #Verificar si el archivo tiene UN cierre de lote (trailer)
     cantidadTrailers=`echo "$contenido" | grep '^CI.*' -c`
