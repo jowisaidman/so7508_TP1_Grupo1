@@ -12,6 +12,7 @@ while true; do
     
     #Proceso info
     bash preprocess.sh
+    bash procesarSalida.sh
 
     count=$((count + increment))
     sleep 10
