@@ -6,6 +6,8 @@ path_rechazados=$rechazados
 path_procesados=$procesados
 path_bin=$bin
 
+set -e
+
 cd ../$path_novedades
 
 logInfo $0 "Comienza el preprocesamiento." "../conf/logs/process.log"
@@ -61,3 +63,5 @@ cd ..
 cd ./$path_bin
 
 logInfo $0 "Fin del preprocesamiento." "../conf/logs/process.log"
+
+set +e

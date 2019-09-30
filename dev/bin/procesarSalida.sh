@@ -6,6 +6,8 @@ path_procesados=$procesados
 path_salida=$salida
 path_bin=$bin
 
+set -e
+
 #Se debe loguear correctamente cada paso
 
 #Leer uno a uno los archivos de la carpeta "Aceptados"
@@ -131,3 +133,4 @@ done
 cd ..
 cd ./$path_bin
 
+set +e
