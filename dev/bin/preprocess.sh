@@ -4,6 +4,7 @@ path_novedades=$novedades
 path_aceptados=$aceptados
 path_rechazados=$rechazados
 path_procesados=$procesados
+path_bin=$bin
 
 cd ../$path_novedades
 
@@ -55,5 +56,8 @@ do
 
 	logInfo $0 "Fin exitoso del preprocesamiento de $i."
 done
+
+cd ..
+cd ./$path_bin
 
 logInfo $0 "Fin del preprocesamiento."

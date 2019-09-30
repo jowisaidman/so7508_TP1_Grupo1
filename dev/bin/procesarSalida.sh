@@ -1,14 +1,15 @@
 source ./helpers.sh
 
-#TODO: Cambiar para que tome los paths configurados.
 path_aceptados=$aceptados
 path_rechazados=$rechazados
 path_procesados=$procesados
+path_salida=$salida
+path_bin=$bin
 
 #Se debe loguear correctamente cada paso
 
 #Leer uno a uno los archivos de la carpeta "Aceptados"
-cd ./$path_aceptados
+cd ../$path_aceptados
 
 for i in `ls`
 do
@@ -32,6 +33,8 @@ do
     cantidadTransaccionesSegunTrailer=`echo "$trailer" | cut -d ',' -f3`
     cantidadTransacciones=`echo "$contenido" | grep -v '^CI.*' -c`
 
+    logInfo $0 "El archivo $i tiene $cantidadTransacciones contabilizados y $cantidadTransaccionesSegunTrailer segun el trailer"
+
     if [ $cantidadTransaccionesSegunTrailer == $cantidadTransacciones ];
 	then
         logInfo $0 "El archivo $i tiene $cantidadTransacciones transacciones."
@@ -43,7 +46,7 @@ do
 
     #Grabar el cierre de lote
     cd ..
-    cd ./$path_procesados
+    cd ./$path_salida
 
     tipoOperacion=`echo "$trailer" | cut -d ',' -f1`
     descripcionOperacion=`echo "$trailer" | cut -d ',' -f2`
@@ -73,6 +76,7 @@ do
     #Procesar las transacciones
     transacciones=`echo "$contenido" | grep -v '^CI.*'`
 
+    IFS_DEFAULT=$IFS
     IFS=$'\n' # para que el "for" separe por linea
     for j in $transacciones
     do
@@ -116,9 +120,14 @@ do
         echo $original,$parseado >> TRX_$contenidoAnio$mes$dia.csv
 
     done
+    IFS=$IFS_DEFAULT
 
     cd ..
     cd ./$path_aceptados
+    mv $i ../$path_procesados
 
 done
+
+cd ..
+cd ./$path_bin
 
