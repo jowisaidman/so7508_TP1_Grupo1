@@ -13,7 +13,7 @@ cd ../$path_aceptados
 
 for i in `ls`
 do
-    logInfo $0 Procesando el archivo $i
+    logInfo $0 "Procesando el archivo $i"
 
     contenido=`more $i`
 
