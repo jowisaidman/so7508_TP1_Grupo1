@@ -13,7 +13,7 @@ cd ../$path_aceptados
 
 for i in `ls`
 do
-    logInfo $0 "Procesando el archivo $i"
+    logInfo $0 "Procesando el archivo $i" "../conf/logs/process.log"
 
     contenido=`cat $i`
 
@@ -21,9 +21,9 @@ do
     cantidadTrailers=`echo "$contenido" | grep '^CI.*' -c`
     if [ $cantidadTrailers == 1 ];
 	then
-        logInfo $0 "El archivo $i tiene un cierre de lote."
+        logInfo $0 "El archivo $i tiene un cierre de lote." "../conf/logs/process.log"
 	else
-        logInfo $0 "El archivo $i tiene $cantidadTrailers cierre de lote y debería tener 1."
+        logInfo $0 "El archivo $i tiene $cantidadTrailers cierre de lote y debería tener 1." "../conf/logs/process.log"
         mv $i ../$path_rechazados
 		continue
 	fi
@@ -33,13 +33,13 @@ do
     cantidadTransaccionesSegunTrailer=`echo "$trailer" | cut -d ',' -f3`
     cantidadTransacciones=`echo "$contenido" | grep -v '^CI.*' -c`
 
-    logInfo $0 "El archivo $i tiene $cantidadTransacciones contabilizados y $cantidadTransaccionesSegunTrailer segun el trailer"
+    logInfo $0 "El archivo $i tiene $cantidadTransacciones transacciones contabilizadas y $cantidadTransaccionesSegunTrailer segun el trailer" "../conf/logs/process.log"
 
     if [ $cantidadTransaccionesSegunTrailer == $cantidadTransacciones ];
 	then
-        logInfo $0 "El archivo $i tiene $cantidadTransacciones transacciones."
+        logInfo $0 "El archivo $i tiene $cantidadTransacciones transacciones." "../conf/logs/process.log"
 	else
-        logInfo $0 "No coinciden la cantidad de transacciones del trailer con las leidas del archivo $i"
+        logInfo $0 "No coinciden la cantidad de transacciones del trailer con las leidas del archivo $i" "../conf/logs/process.log"
         mv $i ../$path_rechazados
 		continue
 	fi
@@ -99,10 +99,10 @@ do
 
         if [ `echo "$msjHost" | grep '[a-zA-Z]' -c` == 0 ];
         then
-            logInfo $0 "No tiene mensaje host"
+            logInfo $0 "No tiene mensaje host" "../conf/logs/process.log"
             msjHost=$(cat codigos.csv | grep "^$codigoISO.*" | sed "s-\([^,]*\)\,\([^,]*\),\([^,]*\)-\2\|\ \3-g")
         else
-            logInfo $0 "Tiene mensaje host y es $msjHost"
+            logInfo $0 "Tiene mensaje host y es $msjHost" "../conf/logs/process.log"
         fi
 
         contenidoFechaHora=`echo "$fechaHora" | cut -d '>' -f2`
