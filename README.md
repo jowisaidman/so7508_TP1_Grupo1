@@ -1,7 +1,7 @@
 # Primer Trabajo Practico Sistemas Operativos
 
 Para iniciar la instalacion:
-    sudo bash install.sh
+    bash install.sh
 
 Para inicializar el sistema:
     . initialize.sh
