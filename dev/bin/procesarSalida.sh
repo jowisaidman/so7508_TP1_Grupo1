@@ -99,10 +99,10 @@ do
 
         if [ `echo "$msjHost" | grep '[a-zA-Z]' -c` == 0 ];
         then
-            echo "No tiene mensaje host"
+            logInfo $0 "No tiene mensaje host"
             msjHost=$(cat codigos.csv | grep "^$codigoISO.*" | sed "s-\([^,]*\)\,\([^,]*\),\([^,]*\)-\2\|\ \3-g")
         else
-            echo "Tiene mensaje host y es $msjHost"
+            logInfo $0 "Tiene mensaje host y es $msjHost"
         fi
 
         contenidoFechaHora=`echo "$fechaHora" | cut -d '>' -f2`
