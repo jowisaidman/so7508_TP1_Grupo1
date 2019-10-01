@@ -1,0 +1,12 @@
+lun sep 30 21:16:23 -03 2019 - lautaro - preprocess.sh - INF - Comienza el preprocesamiento.
+lun sep 30 21:16:23 -03 2019 - lautaro - preprocess.sh - INF - El archivo Lote_001.csv no tiene un nombre valido.
+lun sep 30 21:16:23 -03 2019 - lautaro - preprocess.sh - INF - El archivo Lote_00.csv no tiene un nombre valido.
+lun sep 30 21:16:23 -03 2019 - lautaro - preprocess.sh - INF - El archivo lote_01.csv no tiene un nombre valido.
+lun sep 30 21:16:23 -03 2019 - lautaro - preprocess.sh - INF - El archivo Lote 01.csv no tiene un nombre valido.
+lun sep 30 21:16:23 -03 2019 - lautaro - preprocess.sh - INF - El archivo Lote-01.csv no tiene un nombre valido.
+lun sep 30 21:16:23 -03 2019 - lautaro - preprocess.sh - INF - El archivo Lote01.csv no tiene un nombre valido.
+lun sep 30 21:16:23 -03 2019 - lautaro - preprocess.sh - INF - El archivo Lote_02_archi.csv no tiene un nombre valido.
+lun sep 30 21:16:23 -03 2019 - lautaro - preprocess.sh - INF - El archivo Lote_199.csv no tiene un nombre valido.
+lun sep 30 21:16:23 -03 2019 - lautaro - preprocess.sh - INF - El archivo Loter_01.csv no tiene un nombre valido.
+lun sep 30 21:16:23 -03 2019 - lautaro - preprocess.sh - INF - El archivo Miarchivo_Lote_01.csv no tiene un nombre valido.
+lun sep 30 21:16:23 -03 2019 - lautaro - preprocess.sh - INF - Fin del preprocesamiento.
