@@ -23,12 +23,12 @@ function evaluateDirectory() {
       then
       logInfo "Evaluando directorio" "Existe el directorio $1" "conf/logs/initialize.log"
       else
-      logInfo "Evaluando directorio" "No existe el directorio $1, volver a correr el instalador para arreglar el problema"
-      logInfo "Evaluando directorio" "No existe el directorio $1, volver a correr el instalador para arreglar el problema" "conf/logs/initialize.log"
+      logAlerta "Evaluando directorio" "No existe el directorio $1, volver a correr el instalador para arreglar el problema"
+      logAlerta "Evaluando directorio" "No existe el directorio $1, volver a correr el instalador para arreglar el problema" "conf/logs/initialize.log"
       return 1
       fi
     else
-      logInfo "Evaluando directorio" "Variable no setteada" "conf/logs/initialize.log"
+      logAlerta "Evaluando directorio" "Variable no setteada" "conf/logs/initialize.log"
       return 1
   fi 
 }
@@ -92,7 +92,7 @@ if [ -z $init ];
       then
         logInfo "Directories and export" "Las variables se iniciaron correctamente y los directorios estan todos correctos" "conf/logs/initialize.log"
       else
-        logInfo "Directories and export" "El sistema no fue inicializado, se encontraron errores con los directorios, observar el archivo conf/logs/initialize.log"
+        logAlerta "Directories and export" "El sistema no fue inicializado, se encontraron errores con los directorios, observar el archivo conf/logs/initialize.log"
         cd $bin/ #Vuelvo a la carpeta de ejecutables
         return 1
     fi
