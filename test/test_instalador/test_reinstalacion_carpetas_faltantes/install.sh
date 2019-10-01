@@ -4,6 +4,17 @@ repair_installation=$1
 
 declare -a DIRECTORIOSREALES=("bin" "maestros" "novedades" "aceptados" "rechazados" "procesados" "salida" )
 
+logInfo() {
+    output="/dev/tty"
+    if [[ ! -z "$3" ]]; then
+        output="$3"
+        if [[ ! -f "$output" ]]; then
+            echo > $output
+        fi
+    fi
+    echo `date` - $USERNAME - $1 - INF - $2 >> "$output"
+}
+
 main () {
     if [ -d "GRUPO01/" ]; then
         reinstallation_is_posible="NO"
@@ -35,7 +46,6 @@ save_original_package () {
     mkdir original_package
     cp "files.zip" "original_package"
     cp "install.sh" "original_package"
-    cp "helpers.sh" "original_package"
 }
 
 #Elimina los archivos que ya no son de utilidad
@@ -44,7 +54,7 @@ remove_useless_files () {
     showOutputs "Estado de instalacion" "Eliminando archivos innecesarios"
     echo ""
     rm files.zip
-    rm install.sh
+    # rm install.sh
 }
 
 #Imprime mensaje de bienvenida
@@ -115,7 +125,7 @@ get_subdirectories () {
         dir=("$s_executable" "$s_master" "$s_extern" "$ss_temp" "$s_rejected" "$s_processed" "$s_exit" "$s_conf" "$grupo")
         print_details "$dir"
         read -p "¿Confirma la instalacion? (SI-NO): " installation_accepted
-        logInfo "Estado de instalacion" "La opcion elegida para confirmar la instalacion fue: $installation_accepted" "GRUPO01/conf/log.txt"
+        logInfo "Estado de instalacion" "La opcion elegida para confirmar la instalacion fue: $installation_accepted" "GRUPO01/conf/logs/instalacion.log"
         validate_subdirectories "$dir" "$reapeat_directory"
     done
 }
@@ -178,7 +188,7 @@ print_details () {
     echo "  TP SO7508 2º Cuatrimestre 2019. Copyright © Grupo 01"
     echo "  Directorio padre: GRUPO01"
     echo "  Directorio de configuración:  /conf"
-    echo "  Archivos de log: /conf/log"
+    echo "  Archivos de log: /conf/logs/instalacion.log
     echo "  Libreria de ejecutables: /${dir[0]}"
     echo "  Repositorio de maestros: /${dir[1]}"
     echo "  Directorio para las novedades… /${dir[2]}"
@@ -187,7 +197,7 @@ print_details () {
     echo "  Directorio para Archivos procesados… /${dir[5]}"
     echo "  Directorio para los archivos de salida… /${dir[6]}"
     echo ""
-    echo "ATENCION: Los logs del sistema se depositan en /conf/log"
+    echo "ATENCION: Los logs del sistema se depositan en /conf/logs/instalacion.log
     echo ""
     echo "Estado de la instalacion: LISTA"
 }
@@ -209,13 +219,13 @@ create_initial_directories () {
         showOutputs "Estado de intalacion" "La carpeta $grupo/$s_conf ya se encuentra creada"
     fi
     sleep 1
-    if [ -f "GRUPO01/conf/log.txt" ]; then
-        showOutputs "Estado de intalacion" "El archivo GRUPO01/conf/log.txt ya se encuentra creado"
+    if [ -f "GRUPO01/conf/logs/instalacion.log" ]; then
+        showOutputs "Estado de intalacion" "El archivo GRUPO01/conf/logs/instalacion.log ya se encuentra creado"
     else
-        touch "GRUPO01/conf/log.txt"
+        touch "GRUPO01/conf/logs/instalacion.log"
         showOutputs "Estado de intalacion" "Se creo el archivo log.txt"
-        logInfo "Estado de instalacion" "La instalacion comenzo" "GRUPO01/conf/log.txt"
-        logInfo "Estado de instalacion" "Se crearon los directorios inciales GRUPO01 y conf" "GRUPO01/conf/log.txt" 
+        logInfo "Estado de instalacion" "La instalacion comenzo" "GRUPO01/conf/logs/instalacion.log"
+        logInfo "Estado de instalacion" "Se crearon los directorios inciales GRUPO01 y conf" "GRUPO01/conf/logs/instalacion.log" 
     fi   
     sleep 1
     echo ""
@@ -223,7 +233,7 @@ create_initial_directories () {
 
 #Crea los directorios elegidos por el usuario
 create_directories () {
-    showOutputs "Estado de instalacion" "Paso 2: Creacion de los directorios" "GRUPO01/conf/log.txt" 
+    showOutputs "Estado de instalacion" "Paso 2: Creacion de los directorios" "GRUPO01/conf/logs/instalacion.log" 
     arr=("$@")
     for j in "${!arr[@]}"; do
         mkdir -p GRUPO01/"${arr[j]}"
@@ -246,12 +256,13 @@ unzip_files () {
 move_files () {
     showOutputs "Estado de instalacion" "Paso 4: Moviendo archivos"
 
-    for i in $(ls -C1 | grep "^[^.]*.sh" | grep -v "install.sh")
+    for i in $(ls -C1 | grep "^[^.]*.sh")
     do
         sudo mv  $i "GRUPO01/$1"
         showOutputs "Estado de instalacion" "Moviendo $i GRUPO01/$1"
         sleep 1
     done
+    sudo mv "codigos.csv" "GRUPO01/$s_master"
     showOutputs "Estado de instalacion" "Archivos movidos"
     echo ""
 }
@@ -316,10 +327,10 @@ check_config_file () {
 print_ini_reparation () {
     if [ ${#repair_installation} -eq 0 ]; then
         echo "Bienvenido, detectamos que el programa ya esta instalado, se verificaran los datos de instalacion"
-        logInfo "Estado de instalacion" "Verificando instalacion" "GRUPO01/conf/log.txt"   
+        logInfo "Estado de instalacion" "Verificando instalacion" "GRUPO01/conf/logs/instalacion.log"   
     else
         echo "Bienvenido, el modo reparacion a comenzado"
-        logInfo "Estado de instalacion" "Reparando instalacion" "GRUPO01/conf/log.txt"
+        logInfo "Estado de instalacion" "Reparando instalacion" "GRUPO01/conf/logs/instalacion.log"
     fi
     echo ""    
 }
@@ -376,7 +387,7 @@ print_options () {
     echo ""
     read -p "Elija la opcion deseada: " option_choose
     echo ""
-    logInfo "Estado de instalacion" "La opcion elegida para reinstalar fue $option_chose" "GRUPO01/conf/log.txt"
+    logInfo "Estado de instalacion" "La opcion elegida para reinstalar fue $option_chose" "GRUPO01/conf/logs/instalacion.log"
 }
 
 #Lee el archivo de configuracion
@@ -423,7 +434,7 @@ containsElement () {
 #Muestra mensaje en la salida standar y lo guarda en el log
 showOutputs () {
     logInfo "$1" "$2"
-    logInfo "$1" "$2" "GRUPO01/conf/log.txt"    
+    logInfo "$1" "$2" "GRUPO01/conf/logs/instalacion.log"    
 }
 
 main 
