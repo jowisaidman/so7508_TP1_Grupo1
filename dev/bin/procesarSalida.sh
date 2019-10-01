@@ -98,7 +98,7 @@ do
     IFS=$'\n' # para que el "for" separe por linea
     for j in $transacciones
     do
-        formatoValido=$(echo "$j" | grep "^.\+,.\+,,,.\+,.\+,.\+,.\+,.\+,.\+,.\+,.\+,.\+,.\+,.\+,.\+,.\+" -c)
+        formatoValido=$(echo "$j" | grep "^.\+,.\+,,,.\+,.\+,.\+,.\+,.\+,.\+,.\+,.\+,.\+,.\+,.*,.\+,.*" -c)
 
         if [ $formatoValido == 0 ];
         then 
@@ -136,7 +136,7 @@ do
 
         if [ -z $msjHost ];
         then 
-            logAlerta $0 "La transacción tiene un código ISO inválido." "../conf/logs/process.log"
+            logAlerta $0 "La transacción tiene un código ISO inválido. Codigo: $contenidoCodigoISO" "../conf/logs/process.log"
             continue
         fi
 

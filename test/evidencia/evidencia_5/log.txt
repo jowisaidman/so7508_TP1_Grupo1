@@ -1,0 +1,263 @@
+mar oct 1 14:27:00 -03 2019 - lautaro - preprocess.sh - INF - Comienza el preprocesamiento.
+mar oct 1 14:27:00 -03 2019 - lautaro - preprocess.sh - INF - El archivo Lote_11.csv no esta vacio.
+mar oct 1 14:27:00 -03 2019 - lautaro - preprocess.sh - INF - El archivo Lote_11.csv es de un formato valido.
+mar oct 1 14:27:00 -03 2019 - lautaro - preprocess.sh - INF - El archivo Lote_11.csv no fue procesado.
+mar oct 1 14:27:00 -03 2019 - lautaro - preprocess.sh - INF - Fin exitoso del preprocesamiento de Lote_11.csv.
+mar oct 1 14:27:00 -03 2019 - lautaro - preprocess.sh - INF - El archivo Lote_12.csv no esta vacio.
+mar oct 1 14:27:00 -03 2019 - lautaro - preprocess.sh - INF - El archivo Lote_12.csv es de un formato valido.
+mar oct 1 14:27:00 -03 2019 - lautaro - preprocess.sh - INF - El archivo Lote_12.csv no fue procesado.
+mar oct 1 14:27:00 -03 2019 - lautaro - preprocess.sh - INF - Fin exitoso del preprocesamiento de Lote_12.csv.
+mar oct 1 14:27:00 -03 2019 - lautaro - preprocess.sh - INF - El archivo Lote_13.csv no esta vacio.
+mar oct 1 14:27:01 -03 2019 - lautaro - preprocess.sh - INF - El archivo Lote_13.csv es de un formato valido.
+mar oct 1 14:27:01 -03 2019 - lautaro - preprocess.sh - INF - El archivo Lote_13.csv no fue procesado.
+mar oct 1 14:27:01 -03 2019 - lautaro - preprocess.sh - INF - Fin exitoso del preprocesamiento de Lote_13.csv.
+mar oct 1 14:27:01 -03 2019 - lautaro - preprocess.sh - INF - El archivo Lote_14.csv no esta vacio.
+mar oct 1 14:27:01 -03 2019 - lautaro - preprocess.sh - INF - El archivo Lote_14.csv es de un formato valido.
+mar oct 1 14:27:01 -03 2019 - lautaro - preprocess.sh - INF - El archivo Lote_14.csv no fue procesado.
+mar oct 1 14:27:01 -03 2019 - lautaro - preprocess.sh - INF - Fin exitoso del preprocesamiento de Lote_14.csv.
+mar oct 1 14:27:01 -03 2019 - lautaro - preprocess.sh - INF - El archivo Lote_15.csv no esta vacio.
+mar oct 1 14:27:01 -03 2019 - lautaro - preprocess.sh - INF - El archivo Lote_15.csv es de un formato valido.
+mar oct 1 14:27:01 -03 2019 - lautaro - preprocess.sh - INF - El archivo Lote_15.csv no fue procesado.
+mar oct 1 14:27:01 -03 2019 - lautaro - preprocess.sh - INF - Fin exitoso del preprocesamiento de Lote_15.csv.
+mar oct 1 14:27:01 -03 2019 - lautaro - preprocess.sh - INF - El archivo Lote_16.csv no esta vacio.
+mar oct 1 14:27:01 -03 2019 - lautaro - preprocess.sh - INF - El archivo Lote_16.csv es de un formato valido.
+mar oct 1 14:27:01 -03 2019 - lautaro - preprocess.sh - INF - El archivo Lote_16.csv no fue procesado.
+mar oct 1 14:27:01 -03 2019 - lautaro - preprocess.sh - INF - Fin exitoso del preprocesamiento de Lote_16.csv.
+mar oct 1 14:27:01 -03 2019 - lautaro - preprocess.sh - INF - El archivo Lote_17.csv no esta vacio.
+mar oct 1 14:27:01 -03 2019 - lautaro - preprocess.sh - INF - El archivo Lote_17.csv es de un formato valido.
+mar oct 1 14:27:01 -03 2019 - lautaro - preprocess.sh - INF - El archivo Lote_17.csv no fue procesado.
+mar oct 1 14:27:01 -03 2019 - lautaro - preprocess.sh - INF - Fin exitoso del preprocesamiento de Lote_17.csv.
+mar oct 1 14:27:01 -03 2019 - lautaro - preprocess.sh - INF - El archivo Lote_18.csv no esta vacio.
+mar oct 1 14:27:01 -03 2019 - lautaro - preprocess.sh - INF - El archivo Lote_18.csv es de un formato valido.
+mar oct 1 14:27:01 -03 2019 - lautaro - preprocess.sh - INF - El archivo Lote_18.csv no fue procesado.
+mar oct 1 14:27:01 -03 2019 - lautaro - preprocess.sh - INF - Fin exitoso del preprocesamiento de Lote_18.csv.
+mar oct 1 14:27:01 -03 2019 - lautaro - preprocess.sh - INF - El archivo Lote_19.csv no esta vacio.
+mar oct 1 14:27:01 -03 2019 - lautaro - preprocess.sh - INF - El archivo Lote_19.csv es de un formato valido.
+mar oct 1 14:27:01 -03 2019 - lautaro - preprocess.sh - INF - El archivo Lote_19.csv no fue procesado.
+mar oct 1 14:27:01 -03 2019 - lautaro - preprocess.sh - INF - Fin exitoso del preprocesamiento de Lote_19.csv.
+mar oct 1 14:27:01 -03 2019 - lautaro - preprocess.sh - INF - El archivo Lote_20.csv no esta vacio.
+mar oct 1 14:27:01 -03 2019 - lautaro - preprocess.sh - INF - El archivo Lote_20.csv es de un formato valido.
+mar oct 1 14:27:01 -03 2019 - lautaro - preprocess.sh - INF - El archivo Lote_20.csv no fue procesado.
+mar oct 1 14:27:01 -03 2019 - lautaro - preprocess.sh - INF - Fin exitoso del preprocesamiento de Lote_20.csv.
+mar oct 1 14:27:01 -03 2019 - lautaro - preprocess.sh - INF - Fin del preprocesamiento.
+mar oct 1 14:27:01 -03 2019 - lautaro - procesarSalida.sh - INF - Procesando el archivo Lote_11.csv
+mar oct 1 14:27:01 -03 2019 - lautaro - procesarSalida.sh - INF - El archivo Lote_11.csv tiene un cierre de lote.
+mar oct 1 14:27:01 -03 2019 - lautaro - procesarSalida.sh - INF - El trailer tiene un formato válido.
+mar oct 1 14:27:01 -03 2019 - lautaro - procesarSalida.sh - INF - El archivo Lote_11.csv tiene 0 transacciones contabilizadas y 0 segun el trailer
+mar oct 1 14:27:01 -03 2019 - lautaro - procesarSalida.sh - INF - El archivo Lote_11.csv tiene 0 transacciones.
+mar oct 1 14:27:01 -03 2019 - lautaro - procesarSalida.sh - INF - Procesando el archivo Lote_12.csv
+mar oct 1 14:27:01 -03 2019 - lautaro - procesarSalida.sh - INF - El archivo Lote_12.csv tiene un cierre de lote.
+mar oct 1 14:27:01 -03 2019 - lautaro - procesarSalida.sh - INF - El trailer tiene un formato válido.
+mar oct 1 14:27:01 -03 2019 - lautaro - procesarSalida.sh - INF - El archivo Lote_12.csv tiene 9 transacciones contabilizadas y 9 segun el trailer
+mar oct 1 14:27:01 -03 2019 - lautaro - procesarSalida.sh - INF - El archivo Lote_12.csv tiene 9 transacciones.
+mar oct  1 14:27:01 -03 2019 - lautaro - procesarSalida.sh - INF - La transacción tiene un formato válido.
+mar oct  1 14:27:01 -03 2019 - lautaro - procesarSalida.sh - INF - No tiene mensaje host
+mar oct  1 14:27:01 -03 2019 - lautaro - procesarSalida.sh - INF - La transacción tiene un formato válido.
+mar oct  1 14:27:01 -03 2019 - lautaro - procesarSalida.sh - INF - No tiene mensaje host
+mar oct  1 14:27:01 -03 2019 - lautaro - procesarSalida.sh - INF - La transacción tiene un formato válido.
+mar oct  1 14:27:01 -03 2019 - lautaro - procesarSalida.sh - INF - No tiene mensaje host
+mar oct  1 14:27:01 -03 2019 - lautaro - procesarSalida.sh - INF - La transacción tiene un formato válido.
+mar oct  1 14:27:01 -03 2019 - lautaro - procesarSalida.sh - INF - No tiene mensaje host
+mar oct  1 14:27:01 -03 2019 - lautaro - procesarSalida.sh - INF - La transacción tiene un formato válido.
+mar oct  1 14:27:01 -03 2019 - lautaro - procesarSalida.sh - INF - No tiene mensaje host
+mar oct  1 14:27:01 -03 2019 - lautaro - procesarSalida.sh - INF - La transacción tiene un formato válido.
+mar oct  1 14:27:01 -03 2019 - lautaro - procesarSalida.sh - INF - No tiene mensaje host
+mar oct  1 14:27:01 -03 2019 - lautaro - procesarSalida.sh - INF - La transacción tiene un formato válido.
+mar oct  1 14:27:01 -03 2019 - lautaro - procesarSalida.sh - INF - No tiene mensaje host
+mar oct  1 14:27:01 -03 2019 - lautaro - procesarSalida.sh - INF - La transacción tiene un formato válido.
+mar oct  1 14:27:01 -03 2019 - lautaro - procesarSalida.sh - INF - No tiene mensaje host
+mar oct  1 14:27:01 -03 2019 - lautaro - procesarSalida.sh - INF - La transacción tiene un formato válido.
+mar oct  1 14:27:01 -03 2019 - lautaro - procesarSalida.sh - INF - No tiene mensaje host
+mar oct 1 14:27:01 -03 2019 - lautaro - procesarSalida.sh - INF - Procesando el archivo Lote_13.csv
+mar oct 1 14:27:01 -03 2019 - lautaro - procesarSalida.sh - INF - El archivo Lote_13.csv tiene un cierre de lote.
+mar oct 1 14:27:01 -03 2019 - lautaro - procesarSalida.sh - INF - El trailer tiene un formato válido.
+mar oct 1 14:27:01 -03 2019 - lautaro - procesarSalida.sh - INF - El archivo Lote_13.csv tiene 7 transacciones contabilizadas y 7 segun el trailer
+mar oct 1 14:27:01 -03 2019 - lautaro - procesarSalida.sh - INF - El archivo Lote_13.csv tiene 7 transacciones.
+mar oct  1 14:27:01 -03 2019 - lautaro - procesarSalida.sh - INF - La transacción tiene un formato válido.
+mar oct  1 14:27:01 -03 2019 - lautaro - procesarSalida.sh - INF - No tiene mensaje host
+mar oct  1 14:27:01 -03 2019 - lautaro - procesarSalida.sh - INF - La transacción tiene un formato válido.
+mar oct  1 14:27:01 -03 2019 - lautaro - procesarSalida.sh - INF - No tiene mensaje host
+mar oct  1 14:27:01 -03 2019 - lautaro - procesarSalida.sh - INF - La transacción tiene un formato válido.
+mar oct  1 14:27:01 -03 2019 - lautaro - procesarSalida.sh - INF - No tiene mensaje host
+mar oct  1 14:27:01 -03 2019 - lautaro - procesarSalida.sh - INF - La transacción tiene un formato válido.
+mar oct  1 14:27:01 -03 2019 - lautaro - procesarSalida.sh - INF - No tiene mensaje host
+mar oct  1 14:27:01 -03 2019 - lautaro - procesarSalida.sh - INF - La transacción tiene un formato válido.
+mar oct  1 14:27:01 -03 2019 - lautaro - procesarSalida.sh - INF - No tiene mensaje host
+mar oct  1 14:27:01 -03 2019 - lautaro - procesarSalida.sh - INF - La transacción tiene un formato válido.
+mar oct  1 14:27:01 -03 2019 - lautaro - procesarSalida.sh - INF - No tiene mensaje host
+mar oct  1 14:27:01 -03 2019 - lautaro - procesarSalida.sh - INF - La transacción tiene un formato válido.
+mar oct  1 14:27:01 -03 2019 - lautaro - procesarSalida.sh - INF - No tiene mensaje host
+mar oct 1 14:27:01 -03 2019 - lautaro - procesarSalida.sh - INF - Procesando el archivo Lote_14.csv
+mar oct 1 14:27:01 -03 2019 - lautaro - procesarSalida.sh - INF - El archivo Lote_14.csv tiene un cierre de lote.
+mar oct 1 14:27:01 -03 2019 - lautaro - procesarSalida.sh - INF - El trailer tiene un formato válido.
+mar oct 1 14:27:01 -03 2019 - lautaro - procesarSalida.sh - INF - El archivo Lote_14.csv tiene 6 transacciones contabilizadas y 6 segun el trailer
+mar oct 1 14:27:01 -03 2019 - lautaro - procesarSalida.sh - INF - El archivo Lote_14.csv tiene 6 transacciones.
+mar oct  1 14:27:01 -03 2019 - lautaro - procesarSalida.sh - INF - La transacción tiene un formato válido.
+mar oct  1 14:27:01 -03 2019 - lautaro - procesarSalida.sh - INF - No tiene mensaje host
+mar oct  1 14:27:01 -03 2019 - lautaro - procesarSalida.sh - INF - La transacción tiene un formato válido.
+mar oct  1 14:27:01 -03 2019 - lautaro - procesarSalida.sh - INF - No tiene mensaje host
+mar oct  1 14:27:01 -03 2019 - lautaro - procesarSalida.sh - INF - La transacción tiene un formato válido.
+mar oct  1 14:27:01 -03 2019 - lautaro - procesarSalida.sh - INF - No tiene mensaje host
+mar oct  1 14:27:01 -03 2019 - lautaro - procesarSalida.sh - INF - La transacción tiene un formato válido.
+mar oct  1 14:27:01 -03 2019 - lautaro - procesarSalida.sh - INF - No tiene mensaje host
+mar oct  1 14:27:01 -03 2019 - lautaro - procesarSalida.sh - INF - La transacción tiene un formato válido.
+mar oct  1 14:27:01 -03 2019 - lautaro - procesarSalida.sh - INF - No tiene mensaje host
+mar oct  1 14:27:01 -03 2019 - lautaro - procesarSalida.sh - INF - La transacción tiene un formato válido.
+mar oct  1 14:27:01 -03 2019 - lautaro - procesarSalida.sh - INF - No tiene mensaje host
+mar oct 1 14:27:01 -03 2019 - lautaro - procesarSalida.sh - INF - Procesando el archivo Lote_15.csv
+mar oct 1 14:27:01 -03 2019 - lautaro - procesarSalida.sh - INF - El archivo Lote_15.csv tiene un cierre de lote.
+mar oct 1 14:27:01 -03 2019 - lautaro - procesarSalida.sh - INF - El trailer tiene un formato válido.
+mar oct 1 14:27:01 -03 2019 - lautaro - procesarSalida.sh - INF - El archivo Lote_15.csv tiene 14 transacciones contabilizadas y 14 segun el trailer
+mar oct 1 14:27:01 -03 2019 - lautaro - procesarSalida.sh - INF - El archivo Lote_15.csv tiene 14 transacciones.
+mar oct  1 14:27:01 -03 2019 - lautaro - procesarSalida.sh - INF - La transacción tiene un formato válido.
+mar oct  1 14:27:01 -03 2019 - lautaro - procesarSalida.sh - INF - No tiene mensaje host
+mar oct  1 14:27:01 -03 2019 - lautaro - procesarSalida.sh - INF - La transacción tiene un formato válido.
+mar oct  1 14:27:01 -03 2019 - lautaro - procesarSalida.sh - INF - No tiene mensaje host
+mar oct  1 14:27:01 -03 2019 - lautaro - procesarSalida.sh - INF - La transacción tiene un formato válido.
+mar oct  1 14:27:01 -03 2019 - lautaro - procesarSalida.sh - INF - No tiene mensaje host
+mar oct  1 14:27:01 -03 2019 - lautaro - procesarSalida.sh - INF - La transacción tiene un formato válido.
+mar oct  1 14:27:01 -03 2019 - lautaro - procesarSalida.sh - INF - No tiene mensaje host
+mar oct  1 14:27:01 -03 2019 - lautaro - procesarSalida.sh - INF - La transacción tiene un formato válido.
+mar oct  1 14:27:01 -03 2019 - lautaro - procesarSalida.sh - INF - Tiene mensaje host y es 18-->POR FAVOR RETENGA LA TARJETA
+mar oct  1 14:27:01 -03 2019 - lautaro - procesarSalida.sh - INF - La transacción tiene un formato válido.
+mar oct  1 14:27:01 -03 2019 - lautaro - procesarSalida.sh - INF - No tiene mensaje host
+mar oct  1 14:27:01 -03 2019 - lautaro - procesarSalida.sh - INF - La transacción tiene un formato válido.
+mar oct  1 14:27:01 -03 2019 - lautaro - procesarSalida.sh - INF - No tiene mensaje host
+mar oct  1 14:27:01 -03 2019 - lautaro - procesarSalida.sh - INF - La transacción tiene un formato válido.
+mar oct  1 14:27:01 -03 2019 - lautaro - procesarSalida.sh - INF - No tiene mensaje host
+mar oct  1 14:27:01 -03 2019 - lautaro - procesarSalida.sh - INF - La transacción tiene un formato válido.
+mar oct  1 14:27:01 -03 2019 - lautaro - procesarSalida.sh - INF - No tiene mensaje host
+mar oct  1 14:27:01 -03 2019 - lautaro - procesarSalida.sh - INF - La transacción tiene un formato válido.
+mar oct  1 14:27:01 -03 2019 - lautaro - procesarSalida.sh - INF - No tiene mensaje host
+mar oct  1 14:27:01 -03 2019 - lautaro - procesarSalida.sh - INF - La transacción tiene un formato válido.
+mar oct  1 14:27:01 -03 2019 - lautaro - procesarSalida.sh - INF - No tiene mensaje host
+mar oct  1 14:27:01 -03 2019 - lautaro - procesarSalida.sh - INF - La transacción tiene un formato válido.
+mar oct  1 14:27:01 -03 2019 - lautaro - procesarSalida.sh - INF - No tiene mensaje host
+mar oct  1 14:27:01 -03 2019 - lautaro - procesarSalida.sh - INF - La transacción tiene un formato válido.
+mar oct  1 14:27:01 -03 2019 - lautaro - procesarSalida.sh - INF - No tiene mensaje host
+mar oct  1 14:27:01 -03 2019 - lautaro - procesarSalida.sh - ALE - La transacción tiene un código ISO inválido. Codigo: 000554
+mar oct  1 14:27:01 -03 2019 - lautaro - procesarSalida.sh - INF - La transacción tiene un formato válido.
+mar oct  1 14:27:01 -03 2019 - lautaro - procesarSalida.sh - INF - No tiene mensaje host
+mar oct  1 14:27:01 -03 2019 - lautaro - procesarSalida.sh - ALE - La transacción tiene un código ISO inválido. Codigo: 000555
+mar oct 1 14:27:01 -03 2019 - lautaro - procesarSalida.sh - INF - Procesando el archivo Lote_16.csv
+mar oct 1 14:27:01 -03 2019 - lautaro - procesarSalida.sh - INF - El archivo Lote_16.csv tiene un cierre de lote.
+mar oct 1 14:27:01 -03 2019 - lautaro - procesarSalida.sh - INF - El trailer tiene un formato válido.
+mar oct 1 14:27:01 -03 2019 - lautaro - procesarSalida.sh - INF - El archivo Lote_16.csv tiene 0 transacciones contabilizadas y 0 segun el trailer
+mar oct 1 14:27:01 -03 2019 - lautaro - procesarSalida.sh - INF - El archivo Lote_16.csv tiene 0 transacciones.
+mar oct 1 14:27:01 -03 2019 - lautaro - procesarSalida.sh - INF - Procesando el archivo Lote_17.csv
+mar oct 1 14:27:01 -03 2019 - lautaro - procesarSalida.sh - INF - El archivo Lote_17.csv tiene un cierre de lote.
+mar oct 1 14:27:01 -03 2019 - lautaro - procesarSalida.sh - INF - El trailer tiene un formato válido.
+mar oct 1 14:27:01 -03 2019 - lautaro - procesarSalida.sh - INF - El archivo Lote_17.csv tiene 17 transacciones contabilizadas y 17 segun el trailer
+mar oct 1 14:27:01 -03 2019 - lautaro - procesarSalida.sh - INF - El archivo Lote_17.csv tiene 17 transacciones.
+mar oct  1 14:27:01 -03 2019 - lautaro - procesarSalida.sh - INF - La transacción tiene un formato válido.
+mar oct  1 14:27:01 -03 2019 - lautaro - procesarSalida.sh - INF - No tiene mensaje host
+mar oct  1 14:27:01 -03 2019 - lautaro - procesarSalida.sh - ALE - La transacción tiene un código ISO inválido. Codigo: 000558
+mar oct  1 14:27:01 -03 2019 - lautaro - procesarSalida.sh - INF - La transacción tiene un formato válido.
+mar oct  1 14:27:01 -03 2019 - lautaro - procesarSalida.sh - INF - No tiene mensaje host
+mar oct  1 14:27:01 -03 2019 - lautaro - procesarSalida.sh - ALE - La transacción tiene un código ISO inválido. Codigo: 000559
+mar oct  1 14:27:01 -03 2019 - lautaro - procesarSalida.sh - INF - La transacción tiene un formato válido.
+mar oct  1 14:27:01 -03 2019 - lautaro - procesarSalida.sh - INF - No tiene mensaje host
+mar oct  1 14:27:01 -03 2019 - lautaro - procesarSalida.sh - ALE - La transacción tiene un código ISO inválido. Codigo: 000560
+mar oct  1 14:27:01 -03 2019 - lautaro - procesarSalida.sh - INF - La transacción tiene un formato válido.
+mar oct  1 14:27:01 -03 2019 - lautaro - procesarSalida.sh - INF - No tiene mensaje host
+mar oct  1 14:27:01 -03 2019 - lautaro - procesarSalida.sh - ALE - La transacción tiene un código ISO inválido. Codigo: 000561
+mar oct  1 14:27:01 -03 2019 - lautaro - procesarSalida.sh - INF - La transacción tiene un formato válido.
+mar oct  1 14:27:01 -03 2019 - lautaro - procesarSalida.sh - INF - No tiene mensaje host
+mar oct  1 14:27:01 -03 2019 - lautaro - procesarSalida.sh - ALE - La transacción tiene un código ISO inválido. Codigo: 000562
+mar oct  1 14:27:01 -03 2019 - lautaro - procesarSalida.sh - INF - La transacción tiene un formato válido.
+mar oct  1 14:27:01 -03 2019 - lautaro - procesarSalida.sh - INF - No tiene mensaje host
+mar oct  1 14:27:01 -03 2019 - lautaro - procesarSalida.sh - ALE - La transacción tiene un código ISO inválido. Codigo: 000563
+mar oct  1 14:27:01 -03 2019 - lautaro - procesarSalida.sh - INF - La transacción tiene un formato válido.
+mar oct  1 14:27:02 -03 2019 - lautaro - procesarSalida.sh - INF - No tiene mensaje host
+mar oct  1 14:27:02 -03 2019 - lautaro - procesarSalida.sh - ALE - La transacción tiene un código ISO inválido. Codigo: 000564
+mar oct  1 14:27:02 -03 2019 - lautaro - procesarSalida.sh - INF - La transacción tiene un formato válido.
+mar oct  1 14:27:02 -03 2019 - lautaro - procesarSalida.sh - INF - No tiene mensaje host
+mar oct  1 14:27:02 -03 2019 - lautaro - procesarSalida.sh - ALE - La transacción tiene un código ISO inválido. Codigo: 000565
+mar oct  1 14:27:02 -03 2019 - lautaro - procesarSalida.sh - INF - La transacción tiene un formato válido.
+mar oct  1 14:27:02 -03 2019 - lautaro - procesarSalida.sh - INF - No tiene mensaje host
+mar oct  1 14:27:02 -03 2019 - lautaro - procesarSalida.sh - ALE - La transacción tiene un código ISO inválido. Codigo: 000566
+mar oct  1 14:27:02 -03 2019 - lautaro - procesarSalida.sh - INF - La transacción tiene un formato válido.
+mar oct  1 14:27:02 -03 2019 - lautaro - procesarSalida.sh - INF - No tiene mensaje host
+mar oct  1 14:27:02 -03 2019 - lautaro - procesarSalida.sh - ALE - La transacción tiene un código ISO inválido. Codigo: 000567
+mar oct  1 14:27:02 -03 2019 - lautaro - procesarSalida.sh - INF - La transacción tiene un formato válido.
+mar oct  1 14:27:02 -03 2019 - lautaro - procesarSalida.sh - INF - No tiene mensaje host
+mar oct  1 14:27:02 -03 2019 - lautaro - procesarSalida.sh - INF - La transacción tiene un formato válido.
+mar oct  1 14:27:02 -03 2019 - lautaro - procesarSalida.sh - INF - No tiene mensaje host
+mar oct  1 14:27:02 -03 2019 - lautaro - procesarSalida.sh - INF - La transacción tiene un formato válido.
+mar oct  1 14:27:02 -03 2019 - lautaro - procesarSalida.sh - INF - No tiene mensaje host
+mar oct  1 14:27:02 -03 2019 - lautaro - procesarSalida.sh - INF - La transacción tiene un formato válido.
+mar oct  1 14:27:02 -03 2019 - lautaro - procesarSalida.sh - INF - No tiene mensaje host
+mar oct  1 14:27:02 -03 2019 - lautaro - procesarSalida.sh - INF - La transacción tiene un formato válido.
+mar oct  1 14:27:02 -03 2019 - lautaro - procesarSalida.sh - INF - No tiene mensaje host
+mar oct  1 14:27:02 -03 2019 - lautaro - procesarSalida.sh - INF - La transacción tiene un formato válido.
+mar oct  1 14:27:02 -03 2019 - lautaro - procesarSalida.sh - INF - No tiene mensaje host
+mar oct  1 14:27:02 -03 2019 - lautaro - procesarSalida.sh - ALE - La transacción tiene un código ISO inválido. Codigo: 000575
+mar oct  1 14:27:02 -03 2019 - lautaro - procesarSalida.sh - INF - La transacción tiene un formato válido.
+mar oct  1 14:27:02 -03 2019 - lautaro - procesarSalida.sh - INF - No tiene mensaje host
+mar oct 1 14:27:02 -03 2019 - lautaro - procesarSalida.sh - INF - Procesando el archivo Lote_18.csv
+mar oct 1 14:27:02 -03 2019 - lautaro - procesarSalida.sh - INF - El archivo Lote_18.csv tiene un cierre de lote.
+mar oct 1 14:27:02 -03 2019 - lautaro - procesarSalida.sh - INF - El trailer tiene un formato válido.
+mar oct 1 14:27:02 -03 2019 - lautaro - procesarSalida.sh - INF - El archivo Lote_18.csv tiene 9 transacciones contabilizadas y 9 segun el trailer
+mar oct 1 14:27:02 -03 2019 - lautaro - procesarSalida.sh - INF - El archivo Lote_18.csv tiene 9 transacciones.
+mar oct  1 14:27:02 -03 2019 - lautaro - procesarSalida.sh - INF - La transacción tiene un formato válido.
+mar oct  1 14:27:02 -03 2019 - lautaro - procesarSalida.sh - INF - No tiene mensaje host
+mar oct  1 14:27:02 -03 2019 - lautaro - procesarSalida.sh - INF - La transacción tiene un formato válido.
+mar oct  1 14:27:02 -03 2019 - lautaro - procesarSalida.sh - INF - No tiene mensaje host
+mar oct  1 14:27:02 -03 2019 - lautaro - procesarSalida.sh - INF - La transacción tiene un formato válido.
+mar oct  1 14:27:02 -03 2019 - lautaro - procesarSalida.sh - INF - No tiene mensaje host
+mar oct  1 14:27:02 -03 2019 - lautaro - procesarSalida.sh - INF - La transacción tiene un formato válido.
+mar oct  1 14:27:02 -03 2019 - lautaro - procesarSalida.sh - INF - No tiene mensaje host
+mar oct  1 14:27:02 -03 2019 - lautaro - procesarSalida.sh - INF - La transacción tiene un formato válido.
+mar oct  1 14:27:02 -03 2019 - lautaro - procesarSalida.sh - INF - No tiene mensaje host
+mar oct  1 14:27:02 -03 2019 - lautaro - procesarSalida.sh - INF - La transacción tiene un formato válido.
+mar oct  1 14:27:02 -03 2019 - lautaro - procesarSalida.sh - INF - No tiene mensaje host
+mar oct  1 14:27:02 -03 2019 - lautaro - procesarSalida.sh - INF - La transacción tiene un formato válido.
+mar oct  1 14:27:02 -03 2019 - lautaro - procesarSalida.sh - INF - No tiene mensaje host
+mar oct  1 14:27:02 -03 2019 - lautaro - procesarSalida.sh - INF - La transacción tiene un formato válido.
+mar oct  1 14:27:02 -03 2019 - lautaro - procesarSalida.sh - INF - No tiene mensaje host
+mar oct  1 14:27:02 -03 2019 - lautaro - procesarSalida.sh - INF - La transacción tiene un formato válido.
+mar oct  1 14:27:02 -03 2019 - lautaro - procesarSalida.sh - INF - No tiene mensaje host
+mar oct 1 14:27:02 -03 2019 - lautaro - procesarSalida.sh - INF - Procesando el archivo Lote_19.csv
+mar oct 1 14:27:02 -03 2019 - lautaro - procesarSalida.sh - INF - El archivo Lote_19.csv tiene un cierre de lote.
+mar oct 1 14:27:02 -03 2019 - lautaro - procesarSalida.sh - INF - El trailer tiene un formato válido.
+mar oct 1 14:27:02 -03 2019 - lautaro - procesarSalida.sh - INF - El archivo Lote_19.csv tiene 7 transacciones contabilizadas y 7 segun el trailer
+mar oct 1 14:27:02 -03 2019 - lautaro - procesarSalida.sh - INF - El archivo Lote_19.csv tiene 7 transacciones.
+mar oct  1 14:27:02 -03 2019 - lautaro - procesarSalida.sh - INF - La transacción tiene un formato válido.
+mar oct  1 14:27:02 -03 2019 - lautaro - procesarSalida.sh - INF - No tiene mensaje host
+mar oct  1 14:27:02 -03 2019 - lautaro - procesarSalida.sh - INF - La transacción tiene un formato válido.
+mar oct  1 14:27:02 -03 2019 - lautaro - procesarSalida.sh - INF - No tiene mensaje host
+mar oct  1 14:27:02 -03 2019 - lautaro - procesarSalida.sh - INF - La transacción tiene un formato válido.
+mar oct  1 14:27:02 -03 2019 - lautaro - procesarSalida.sh - INF - No tiene mensaje host
+mar oct  1 14:27:02 -03 2019 - lautaro - procesarSalida.sh - INF - La transacción tiene un formato válido.
+mar oct  1 14:27:02 -03 2019 - lautaro - procesarSalida.sh - INF - No tiene mensaje host
+mar oct  1 14:27:02 -03 2019 - lautaro - procesarSalida.sh - INF - La transacción tiene un formato válido.
+mar oct  1 14:27:02 -03 2019 - lautaro - procesarSalida.sh - INF - No tiene mensaje host
+mar oct  1 14:27:02 -03 2019 - lautaro - procesarSalida.sh - INF - La transacción tiene un formato válido.
+mar oct  1 14:27:02 -03 2019 - lautaro - procesarSalida.sh - INF - No tiene mensaje host
+mar oct  1 14:27:02 -03 2019 - lautaro - procesarSalida.sh - INF - La transacción tiene un formato válido.
+mar oct  1 14:27:02 -03 2019 - lautaro - procesarSalida.sh - INF - No tiene mensaje host
+mar oct 1 14:27:02 -03 2019 - lautaro - procesarSalida.sh - INF - Procesando el archivo Lote_20.csv
+mar oct 1 14:27:02 -03 2019 - lautaro - procesarSalida.sh - INF - El archivo Lote_20.csv tiene un cierre de lote.
+mar oct 1 14:27:02 -03 2019 - lautaro - procesarSalida.sh - INF - El trailer tiene un formato válido.
+mar oct 1 14:27:02 -03 2019 - lautaro - procesarSalida.sh - INF - El archivo Lote_20.csv tiene 6 transacciones contabilizadas y 6 segun el trailer
+mar oct 1 14:27:02 -03 2019 - lautaro - procesarSalida.sh - INF - El archivo Lote_20.csv tiene 6 transacciones.
+mar oct  1 14:27:02 -03 2019 - lautaro - procesarSalida.sh - INF - La transacción tiene un formato válido.
+mar oct  1 14:27:02 -03 2019 - lautaro - procesarSalida.sh - INF - No tiene mensaje host
+mar oct  1 14:27:02 -03 2019 - lautaro - procesarSalida.sh - INF - La transacción tiene un formato válido.
+mar oct  1 14:27:02 -03 2019 - lautaro - procesarSalida.sh - INF - No tiene mensaje host
+mar oct  1 14:27:02 -03 2019 - lautaro - procesarSalida.sh - INF - La transacción tiene un formato válido.
+mar oct  1 14:27:02 -03 2019 - lautaro - procesarSalida.sh - INF - No tiene mensaje host
+mar oct  1 14:27:03 -03 2019 - lautaro - procesarSalida.sh - INF - La transacción tiene un formato válido.
+mar oct  1 14:27:03 -03 2019 - lautaro - procesarSalida.sh - INF - No tiene mensaje host
+mar oct  1 14:27:03 -03 2019 - lautaro - procesarSalida.sh - INF - La transacción tiene un formato válido.
+mar oct  1 14:27:03 -03 2019 - lautaro - procesarSalida.sh - INF - No tiene mensaje host
+mar oct  1 14:27:03 -03 2019 - lautaro - procesarSalida.sh - INF - La transacción tiene un formato válido.
+mar oct  1 14:27:03 -03 2019 - lautaro - procesarSalida.sh - INF - No tiene mensaje host
+mar oct 1 14:30:08 -03 2019 - lautaro - preprocess.sh - INF - Comienza el preprocesamiento.
+mar oct 1 14:30:08 -03 2019 - lautaro - preprocess.sh - INF - El archivo Lote_12.csv no esta vacio.
+mar oct 1 14:30:08 -03 2019 - lautaro - preprocess.sh - INF - El archivo Lote_12.csv es de un formato valido.
+mar oct 1 14:30:08 -03 2019 - lautaro - preprocess.sh - INF - El archivo Lote_12.csv ya fue procesado con anterioridad.
+mar oct 1 14:30:08 -03 2019 - lautaro - preprocess.sh - INF - El archivo Lote_13.csv no esta vacio.
+mar oct 1 14:30:08 -03 2019 - lautaro - preprocess.sh - INF - El archivo Lote_13.csv es de un formato valido.
+mar oct 1 14:30:08 -03 2019 - lautaro - preprocess.sh - INF - El archivo Lote_13.csv ya fue procesado con anterioridad.
+mar oct 1 14:30:08 -03 2019 - lautaro - preprocess.sh - INF - Fin del preprocesamiento.
