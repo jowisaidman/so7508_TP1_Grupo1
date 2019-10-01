@@ -6,7 +6,11 @@ path_rechazados=$rechazados
 path_procesados=$procesados
 path_bin=$bin
 
-set +e
+if [ -z $init ];
+then 
+    logInfo $0 "No esta inicializado." "../conf/logs/process.log"
+    exit 1
+fi
 
 cd ../$path_novedades
 
@@ -66,5 +70,3 @@ cd ..
 cd ./$path_bin
 
 logInfo $0 "Fin del preprocesamiento." "../conf/logs/process.log"
-
-set -e

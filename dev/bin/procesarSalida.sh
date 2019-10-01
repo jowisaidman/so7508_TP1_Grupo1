@@ -6,7 +6,11 @@ path_procesados=$procesados
 path_salida=$salida
 path_bin=$bin
 
-set +e
+if [ -z $init ];
+then 
+    logInfo $0 "No esta inicializado." "../conf/logs/process.log"
+    exit 1
+fi
 
 #Se debe loguear correctamente cada paso
 
@@ -124,8 +128,6 @@ do
     done
     IFS=$IFS_DEFAULT
 
-set -e
-
     cd ..
     cd ./$path_aceptados
     mv $i ../$path_procesados
@@ -134,5 +136,3 @@ done
 
 cd ..
 cd ./$path_bin
-
-set +e
