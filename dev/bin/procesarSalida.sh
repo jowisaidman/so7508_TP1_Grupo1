@@ -112,6 +112,12 @@ do
             logInfo $0 "Tiene mensaje host y es $msjHost" "../conf/logs/process.log"
         fi
 
+        if [ -z $msjHost ];
+        then 
+            logAlerta $0 "La transacción tiene un código ISO inválido." "../conf/logs/process.log"
+            continue
+        fi
+
         contenidoFechaHora=`echo "$fechaHora" | cut -d '>' -f2`
         contenidoImporte=`echo "$importe" | cut -d '>' -f2`
         contenidoAnio=`echo "$anio" | cut -d '>' -f2`
