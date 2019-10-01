@@ -36,6 +36,18 @@ do
 
     #Verificar que la cantidad de transacciones sea igual a las indicadas en el trailer
     trailer=`echo "$contenido" | grep '^CI.*'`
+
+    formatoValido=$(echo "$trailer" | grep "^.\+,.\+,.\+,.\+,.\+,.\+,,,,,.\+,.\+,.\+,,,,,.\+" -c)
+
+    if [ $formatoValido == 0 ];
+    then 
+        logAlerta $0 "El trailer tiene un formato inválido." "../conf/logs/process.log"
+        mv $i ../$path_rechazados
+        continue
+    else
+        logInfo $0 "El trailer tiene un formato válido." "../conf/logs/process.log"
+    fi
+
     cantidadTransaccionesSegunTrailer=`echo "$trailer" | cut -d ',' -f3`
     cantidadTransacciones=`echo "$contenido" | grep -v '^CI.*' -c`
 

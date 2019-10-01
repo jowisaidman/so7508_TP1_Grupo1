@@ -1,0 +1,17 @@
+mar oct 1 13:29:14 -03 2019 - lautaro - procesarSalida.sh - INF - Procesando el archivo Lote_06.csv
+mar oct 1 13:29:14 -03 2019 - lautaro - procesarSalida.sh - INF - El archivo Lote_06.csv tiene un cierre de lote.
+mar oct 1 13:29:14 -03 2019 - lautaro - procesarSalida.sh - INF - El trailer tiene un formato válido.
+mar oct 1 13:29:14 -03 2019 - lautaro - procesarSalida.sh - INF - El archivo Lote_06.csv tiene 1 transacciones contabilizadas y 1 segun el trailer
+mar oct 1 13:29:14 -03 2019 - lautaro - procesarSalida.sh - INF - El archivo Lote_06.csv tiene 1 transacciones.
+mar oct  1 13:29:14 -03 2019 - lautaro - procesarSalida.sh - INF - La transacción tiene un formato válido.
+mar oct  1 13:29:14 -03 2019 - lautaro - procesarSalida.sh - INF - No tiene mensaje host
+mar oct  1 13:29:14 -03 2019 - lautaro - procesarSalida.sh - ALE - La transacción tiene un código ISO inválido.
+mar oct 1 13:29:14 -03 2019 - lautaro - procesarSalida.sh - INF - Procesando el archivo Lote_07.csv
+mar oct 1 13:29:14 -03 2019 - lautaro - procesarSalida.sh - INF - El archivo Lote_07.csv tiene un cierre de lote.
+mar oct 1 13:29:14 -03 2019 - lautaro - procesarSalida.sh - ALE - El trailer tiene un formato inválido.
+mar oct 1 13:29:14 -03 2019 - lautaro - procesarSalida.sh - INF - Procesando el archivo Lote_08.csv
+mar oct 1 13:29:14 -03 2019 - lautaro - procesarSalida.sh - INF - El archivo Lote_08.csv tiene un cierre de lote.
+mar oct 1 13:29:14 -03 2019 - lautaro - procesarSalida.sh - ALE - El trailer tiene un formato inválido.
+mar oct 1 13:29:14 -03 2019 - lautaro - procesarSalida.sh - INF - Procesando el archivo Lote_09.csv
+mar oct 1 13:29:14 -03 2019 - lautaro - procesarSalida.sh - INF - El archivo Lote_09.csv tiene un cierre de lote.
+mar oct 1 13:29:14 -03 2019 - lautaro - procesarSalida.sh - ALE - El trailer tiene un formato inválido.
