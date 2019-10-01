@@ -29,3 +29,8 @@ logAlerta() {
     fi
     echo `date` - $USERNAME - $1 - ALE - $2 >> "$output"
 }
+
+#Funcion para matar el proceso pasado por parametro
+function killProcess() {
+  ps -ef | grep ".*$1.*" | grep -v grep | awk '{print $2}' | xargs kill
+}
