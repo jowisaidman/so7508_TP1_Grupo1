@@ -8,7 +8,7 @@ path_bin=$bin
 
 if [ -z $init ];
 then 
-    logInfo $0 "No esta inicializado." "../conf/logs/process.log"
+    logAlerta $0 "No esta inicializado." "../conf/logs/process.log"
     exit 1
 fi
 
