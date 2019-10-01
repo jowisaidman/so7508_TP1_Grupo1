@@ -1,0 +1,7 @@
+mar oct 1 13:37:04 -03 2019 - lautaro - procesarSalida.sh - INF - Procesando el archivo Lote_04.csv
+mar oct 1 13:37:04 -03 2019 - lautaro - procesarSalida.sh - INF - El archivo Lote_04.csv tiene 0 cierre de lote y debería tener 1.
+mar oct 1 13:37:04 -03 2019 - lautaro - procesarSalida.sh - INF - Procesando el archivo Lote_05.csv
+mar oct 1 13:37:04 -03 2019 - lautaro - procesarSalida.sh - INF - El archivo Lote_05.csv tiene un cierre de lote.
+mar oct 1 13:37:04 -03 2019 - lautaro - procesarSalida.sh - INF - El trailer tiene un formato válido.
+mar oct 1 13:37:04 -03 2019 - lautaro - procesarSalida.sh - INF - El archivo Lote_05.csv tiene 2 transacciones contabilizadas y 3 segun el trailer
+mar oct 1 13:37:04 -03 2019 - lautaro - procesarSalida.sh - INF - No coinciden la cantidad de transacciones del trailer con las leidas del archivo Lote_05.csv
