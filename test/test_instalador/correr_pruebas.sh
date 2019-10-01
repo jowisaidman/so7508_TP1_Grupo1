@@ -1,7 +1,7 @@
 #!/bin/bash
 echo "Bienvenido, en este script se correran todas las pruebas disponibles para el instalador. Cada prueba tiene un escenario que servira unicamente para la primera vez que se corre este script."
 echo ""
-read -p "La prueba finalizo. Precione cualquier tecla para comenzar..."
+read -p "Precione enter para comenzar..."
 clear
 echo ""
 echo "#########################################"
@@ -12,7 +12,7 @@ cd test_primera_instalacion
 bash install.sh
 cd ..
 echo ""
-read -p "La prueba finalizo. Precione cualquier tecla para continuar a la siguiente prueba..."
+read -p "La prueba finalizo. Precione enter para continuar a la siguiente prueba..."
 clear
 echo ""
 echo "#######################################################"
@@ -23,7 +23,7 @@ cd test_reinstalacion_carpetas_faltantes
 bash install.sh
 cd ..
 echo ""
-read -p "La prueba finalizo. Precione cualquier tecla para continuar a la siguiente prueba..."
+read -p "La prueba finalizo. Precione enter para continuar a la siguiente prueba..."
 clear
 echo ""
 echo "##############################################################"
@@ -34,7 +34,7 @@ cd test_reinstalacion_configtxt_dañado
 bash install.sh
 cd ..
 echo ""
-read -p "La prueba finalizo. Precione cualquier tecla para continuar a la siguiente prueba..."
+read -p "La prueba finalizo. Precione enter para continuar a la siguiente prueba..."
 clear
 echo ""
 echo "#######################################################"
@@ -45,7 +45,7 @@ cd test_reinstalacion_ejecutables_faltantes
 bash install.sh
 cd ..
 echo ""
-read -p "La prueba finalizo. Precione cualquier tecla para continuar a la siguiente prueba..."
+read -p "La prueba finalizo. Precione enter para continuar a la siguiente prueba..."
 clear
 echo ""
 echo "#############################################################"

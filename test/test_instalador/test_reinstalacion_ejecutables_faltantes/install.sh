@@ -21,10 +21,33 @@ main () {
     save_configuration "$new_directories"
     create_directories "${new_directories[@]}"
     unzip_files
+    save_original_package
     move_files "$s_executable"
+    remove_useless_files
     showOutputs "Estado de instalacion" "La instalacion finalizo correctamente"
 }
 
+#Guarda el paquete de instalacion en el directorio original_package
+save_original_package () {
+    echo ""
+    showOutputs "Estado de instalacion" "Guardando archivos originales"
+    echo ""
+    mkdir original_package
+    cp "files.zip" "original_package"
+    cp "install.sh" "original_package"
+    cp "helpers.sh" "original_package"
+}
+
+#Elimina los archivos que ya no son de utilidad
+remove_useless_files () {
+    echo ""
+    showOutputs "Estado de instalacion" "Eliminando archivos innecesarios"
+    echo ""
+    rm files.zip
+    rm install.sh
+}
+
+#Imprime mensaje de bienvenida
 show_ini () {
     echo "Bienvenido, la instalacion a comenzado!"
     echo "Debera seleccionar los nombres de los directorios, debe tener en cuenta que NO se puede: "
@@ -34,6 +57,7 @@ show_ini () {
     sleep 1    
 }
 
+#Asigna los valores por defecto a los subdirectorios de GRUPO01 y a GRUPO01
 assign_default_subdirectories () {
     grupo="GRUPO01"
     s_executable="bin"
@@ -46,6 +70,7 @@ assign_default_subdirectories () {
     s_conf="conf"
 }
 
+#Guarda en el archivo de configuracion los nombres de directorio eligidos por el usuario
 save_configuration () {
     showOutputs "Estado de instalacion" "Guardando configuracion de los directorios"
     for j in "${!new_directories[@]}"; do
@@ -61,6 +86,7 @@ save_configuration () {
     sleep 1
 }
 
+#Recibe como parametro un arreglo de directorios (strings) y verifica que sean validos.
 validate_subdirectories () {
     for i in "${!dir[@]}"; do
         for j in "${!dir[@]}"; do
@@ -76,6 +102,9 @@ validate_subdirectories () {
     echo ""
 }
 
+#Recibe como paramtro un arreglo y dos strings. Se encarga de obtener los directorios 
+#que el usuario quiere elegir. Hasta  no obtener una confirmacion del usuario 
+#seguira ejecutandose.
 get_subdirectories () {
     reapeat_directory="NO"
     installation_accepted="NO"
@@ -91,6 +120,7 @@ get_subdirectories () {
     done
 }
 
+#Se encarga de obtener el valor de cada subdirectorio.
 ask_subdirectories () {
     zero=0
     showOutputs "Estado de instalacion" "Paso 1: Seleccionar directorios" 
@@ -138,6 +168,9 @@ ask_subdirectories () {
     fi 
 }
 
+
+#Recibe como parametro un arreglo que contiene los nombres de los directorios
+#que el usuario eligio e imprime los detalles de instalacion. 
 print_details () {
     echo ""
     echo "INFORMACION"
@@ -159,6 +192,7 @@ print_details () {
     echo "Estado de la instalacion: LISTA"
 }
 
+#Crea los directorios iniciales y el archivo de log de la instalacion
 create_initial_directories () {
     if [ ! -d "GRUPO01/" ]; then
         echo "Creando directorios iniciales"
@@ -187,6 +221,7 @@ create_initial_directories () {
     echo ""
 }
 
+#Crea los directorios elegidos por el usuario
 create_directories () {
     showOutputs "Estado de instalacion" "Paso 2: Creacion de los directorios" "GRUPO01/conf/log.txt" 
     arr=("$@")
@@ -198,6 +233,7 @@ create_directories () {
     echo ""
 }
 
+#Descomprime el arhcivo files.zip 
 unzip_files () {
     showOutputs "Estado de instalacion" "Paso 3: Descomprimiendo archivos"
     unzip files.zip
@@ -206,6 +242,7 @@ unzip_files () {
     sleep 2
 }
 
+#Recive un arreglo de directorios y los mueve a los lugares correspondientes 
 move_files () {
     showOutputs "Estado de instalacion" "Paso 4: Moviendo archivos"
 
@@ -219,6 +256,8 @@ move_files () {
     echo ""
 }
 
+#Verifica si es necesario realizar una reinstalacion, en caso de serlo
+#se encarga que se realize de forma exitosa.
 check_installation () {
     print_ini_reparation
     declare -a dir=()
@@ -252,6 +291,7 @@ check_installation () {
     showOutputs "Estado de instalacion" "La instalacion finalizo correctamente"
 }
 
+#Verifica que sea correcta la cantidad de archivos dentro del directorio de ejecutables
 check_files () {
     cd "GRUPO01/$1"
     number_of_files=$(ls -l | grep -v ^l | wc -l)
@@ -262,6 +302,7 @@ check_files () {
     cd ..
 }
 
+#Verifica que el archivo de configuracion se encuentre en buen estado
 check_config_file () {
     if [ -f "GRUPO01/conf/config.txt" ]; then
         number_of_lines=$(< "GRUPO01/conf/config.txt" wc -l)
@@ -271,6 +312,7 @@ check_config_file () {
     fi
 }
 
+#Imprime mensaje de inicio de la reinstalacion
 print_ini_reparation () {
     if [ ${#repair_installation} -eq 0 ]; then
         echo "Bienvenido, detectamos que el programa ya esta instalado, se verificaran los datos de instalacion"
@@ -305,17 +347,20 @@ execute_reparation () {
 
 repair_files () {
     unzip_files
+    save_original_package
     ( IFS=$'    \n'; showOutputs "Estado de instalacion" "${dir[*]}" )
     move_files "${dir[0]}"
+    remove_useless_files
 }
 
-
+#Reanuda la instalacion
 resume_instation () {
     showOutputs "Estado de instalacion" "Reanudando la instalacion"
     create_directories "${missing_directories[@]}"
     repair_files "$dir"
 }
 
+#Borra la carpeta del programa.
 delete_instalation () {
     showOutputs "Estado de instalacion" "Borrando archivos"
     rm -r "GRUPO01"
@@ -323,6 +368,7 @@ delete_instalation () {
     echo "Archivos borrados, finalizo el instador"    
 }
 
+#Imprime las opciones disponibles que tiene el usuario
 print_options () {
     echo "[0] Para continuar con la instalacion"
     echo "[1] Para finalizar instalacion"
@@ -333,6 +379,7 @@ print_options () {
     logInfo "Estado de instalacion" "La opcion elegida para reinstalar fue $option_chose" "GRUPO01/conf/log.txt"
 }
 
+#Lee el archivo de configuracion
 read_conf_file () {
     input="$PWD/GRUPO01/conf/config.txt"
     while IFS=, read -r a b ; do
@@ -340,6 +387,7 @@ read_conf_file () {
     done < "$input"
 }
 
+#Obtiene los directorios que existen dentro de la carpeta GRUPO01
 get_created_directories () {
     cd GRUPO01
     for d in */ ; do
@@ -348,6 +396,7 @@ get_created_directories () {
     cd ..
 }
 
+#Verifica que directorios existen dentro de GRUPO01.
 check_directories () {
     for i in "${!dir[@]}"; do
         containsElement "${dir[i]}" "${created_directories[@]}"
@@ -363,6 +412,7 @@ check_directories () {
     echo ""
 }
 
+#Recibe como parametro un arreglo y un string y verifica si el arreglo contiene al string
 containsElement () {
   local e match="$1"
   shift
@@ -370,6 +420,7 @@ containsElement () {
   return 0
 }
 
+#Muestra mensaje en la salida standar y lo guarda en el log
 showOutputs () {
     logInfo "$1" "$2"
     logInfo "$1" "$2" "GRUPO01/conf/log.txt"    
