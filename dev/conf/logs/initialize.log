@@ -7,3 +7,7 @@ Mon Sep 30 15:50:03 -03 2019 - - Comienzo - INF - Me paro en la raiz
 Mon Sep 30 15:50:03 -03 2019 - - Evaluando directorio - INF - Existe el directorio bin
 Mon Sep 30 15:50:03 -03 2019 - - Variables Ambiente - INF - La variable 'bin' fue setteada con valor 'bin'
 Mon Sep 30 15:50:03 -03 2019 - - Evaluando directorio - INF - No existe el directorio maestros, volver a correr el instalador para arreglar el problema
+Tue Oct 1 10:33:39 -03 2019 - - Comienzo - INF - Me paro en la raiz
+Tue Oct 1 10:33:39 -03 2019 - - Evaluando directorio - INF - Existe el directorio bin
+Tue Oct 1 10:33:39 -03 2019 - - Variables Ambiente - INF - La variable 'bin' fue setteada con valor 'bin'
+Tue Oct 1 10:33:39 -03 2019 - - Evaluando directorio - ALE - No existe el directorio maestros, volver a correr el instalador para arreglar el problema
