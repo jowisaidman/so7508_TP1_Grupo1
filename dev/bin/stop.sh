@@ -1,5 +1,4 @@
 #!/bin/bash
-source ./validaciones.sh
 source ./helpers.sh
 
 isRunning "process.sh"
