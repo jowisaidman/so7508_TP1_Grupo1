@@ -45,10 +45,22 @@ do
 		continue
 	fi
 
+    #Valido que el archivo sea de texto
+    tipoArchivo=`file $i`
+    esArchivoTexto=`echo "$tipoArchivo" | grep '.*text.*' -c`
+    if [ $esArchivoTexto == 1 ];
+    then
+        logInfo $0 "El archivo $i es de un formato valido." "../conf/logs/process.log"
+    else
+        logInfo $0 "El archivo $i es de un formato invalido." "../conf/logs/process.log"
+		mv $i ../$path_rechazados
+		continue
+    fi
+
+	#Valido que el archivo no haya sido procesado.
 	cd ..
 	cd ./$path_procesados
 
-	#Valido que el archivo no haya sido procesado.
 	if test -f $i;
 	then
 		logInfo $0 "El archivo $i ya fue procesado con anterioridad." "../conf/logs/process.log"

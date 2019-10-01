@@ -1,0 +1,5 @@
+lun sep 30 23:48:38 -03 2019 - lautaro - preprocess.sh - INF - Comienza el preprocesamiento.
+lun sep 30 23:48:38 -03 2019 - lautaro - preprocess.sh - INF - El archivo Lote_02.csv esta vacio.
+lun sep 30 23:48:38 -03 2019 - lautaro - preprocess.sh - INF - El archivo Lote_03.csv no esta vacio.
+lun sep 30 23:48:38 -03 2019 - lautaro - preprocess.sh - INF - El archivo Lote_03.csv es de un formato invalido.
+lun sep 30 23:48:38 -03 2019 - lautaro - preprocess.sh - INF - Fin del preprocesamiento.
