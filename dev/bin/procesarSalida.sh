@@ -86,6 +86,16 @@ do
     IFS=$'\n' # para que el "for" separe por linea
     for j in $transacciones
     do
+        formatoValido=$(echo "$j" | grep "^.\+,.\+,,,.\+,.\+,.\+,.\+,.\+,.\+,.\+,.\+,.\+,.\+,.\+,.\+,.\+" -c)
+
+        if [ $formatoValido == 0 ];
+        then 
+            logAlerta $0 "La transacción tiene un formato inválido." "../conf/logs/process.log"
+            continue
+        else
+            logInfo $0 "La transacción tiene un formato válido." "../conf/logs/process.log"
+        fi
+
         tipoOperacion=`echo "$j" | cut -d ',' -f1`
         descripcionOperacion=`echo "$j" | cut -d ',' -f2`
         anio=`echo "$j" | cut -d ',' -f5`
