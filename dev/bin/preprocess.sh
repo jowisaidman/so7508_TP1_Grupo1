@@ -13,10 +13,10 @@ cd ../$path_novedades
 logInfo $0 "Comienza el preprocesamiento." "../conf/logs/process.log"
 
 #Lista de todos los archivos del formato Lote_XX.csv
-archivos_procesables=`ls | grep '^Lote_[0-9][0-9]\?\.csv'`
+archivos_procesables=`ls | grep '^Lote_\(0[1-9]\|[1-9][0-9]\).csv'`
 
 #Lista de todos los archivos que no respetan el formato de nombre.
-archivos_no_procesables=`ls | grep -v '^Lote_[0-9][0-9]\?\.csv'`
+archivos_no_procesables=`ls | grep -v '^Lote_\(0[1-9]\|[1-9][0-9]\).csv'`
 
 #Rechazo los archivos de nombre invalido.
 IFS_DEFAULT=$IFS
