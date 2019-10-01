@@ -106,7 +106,8 @@ do
         if [ `echo "$msjHost" | grep '[a-zA-Z]' -c` == 0 ];
         then
             logInfo $0 "No tiene mensaje host" "../conf/logs/process.log"
-            msjHost=$(cat codigos.csv | grep "^$codigoISO.*" | sed "s-\([^,]*\)\,\([^,]*\),\([^,]*\)-\2\|\ \3-g")
+            contenidoCodigoISO=`echo "$codigoISO" | cut -d '>' -f2`
+            msjHost=$(cat codigos.csv | grep "^$contenidoCodigoISO,.*" | sed "s-\([^,]*\)\,\([^,]*\),\([^,]*\)-\2\|\ \3-g" | sed "s-,--g")
         else
             logInfo $0 "Tiene mensaje host y es $msjHost" "../conf/logs/process.log"
         fi
@@ -121,9 +122,9 @@ do
         monto=${contenidoImporte:0:10},${contenidoImporte:10:2}
 
         parseado=$mes,$dia,$hora,$monto
-        original=$tipoOperacion,$descripcionOperacion,$anio,$fechaHora,$numeroTarjeta,$vencimiento,$importe,$cuotas,$traceNumber,$codigoISO,$retrievalNumber,$ticketNumber,$autorizacion,$idTrx,$trxRelacionada,$msjHost
+        original=$tipoOperacion,$descripcionOperacion,$anio,$fechaHora,$numeroTarjeta,$vencimiento,$importe,$cuotas,$traceNumber,$codigoISO,$retrievalNumber,$ticketNumber,$autorizacion,$idTrx,$trxRelacionada
 
-        echo $original,$parseado >> TRX_$contenidoAnio$mes$dia.csv
+        echo $original,"$msjHost",$parseado >> TRX_$contenidoAnio$mes$dia.csv
 
     done
     IFS=$IFS_DEFAULT
