@@ -1,13 +1,13 @@
-# Primer Trabajo Practico Sistemas Operativos
+# Primer Trabajo Práctico Sistemas Operativos
 
-Para iniciar la instalacion:
+Para iniciar la instalación:
     bash install.sh
 
 Para inicializar el sistema:
     . initialize.sh
     
-Para iniciar la ejecucion: 
+Para iniciar la ejecución: 
     . start.sh
 
-Para frenar la ejecucion:
+Para frenar la ejecución:
     . stop.sh
