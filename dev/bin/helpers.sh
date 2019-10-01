@@ -34,3 +34,8 @@ logAlerta() {
 function killProcess() {
   ps -ef | grep ".*$1.*" | grep -v grep | awk '{print $2}' | xargs kill
 }
+
+#Funcion que devuelve si el proceso pasado por parametro esta corriendo:
+function isRunning() {  
+  ps -ef | grep ".*$1.*" | grep -v -q grep   
+}
