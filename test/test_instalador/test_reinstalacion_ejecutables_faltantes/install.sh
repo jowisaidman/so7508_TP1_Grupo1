@@ -219,11 +219,17 @@ create_initial_directories () {
         showOutputs "Estado de intalacion" "La carpeta $grupo/$s_conf ya se encuentra creada"
     fi
     sleep 1
+    if [ ! -d "$grupo/$s_conf/logs" ]; then
+        mkdir "$grupo/$s_conf/logs"
+        echo "Se creo directorio ($grupo/$s_conf/logs)"
+    else
+        showOutputs "Estado de intalacion" "La carpeta $grupo/$s_conf/logs ya se encuentra creada"
+    fi
     if [ -f "GRUPO01/conf/logs/instalacion.log" ]; then
         showOutputs "Estado de intalacion" "El archivo GRUPO01/conf/logs/instalacion.log ya se encuentra creado"
     else
         touch "GRUPO01/conf/logs/instalacion.log"
-        showOutputs "Estado de intalacion" "Se creo el archivo log.txt"
+        showOutputs "Estado de intalacion" "Se creo el archivo instalacion.log"
         logInfo "Estado de instalacion" "La instalacion comenzo" "GRUPO01/conf/logs/instalacion.log"
         logInfo "Estado de instalacion" "Se crearon los directorios inciales GRUPO01 y conf" "GRUPO01/conf/logs/instalacion.log" 
     fi   

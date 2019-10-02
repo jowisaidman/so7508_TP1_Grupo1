@@ -1,0 +1,38 @@
+
+Tue Oct 1 21:09:44 -03 2019 - - Estado de instalacion - INF - Verificando instalacion
+Tue Oct 1 21:09:44 -03 2019 - - Estado de instalacion - INF - ATENCION: El directorio bin NO existe
+Tue Oct 1 21:09:45 -03 2019 - - Estado de instalacion - INF - ATENCION: El directorio maestros NO existe
+Tue Oct 1 21:09:46 -03 2019 - - Estado de instalacion - INF - ATENCION: El directorio nuevos NO existe
+Tue Oct 1 21:09:47 -03 2019 - - Estado de instalacion - INF - ATENCION: El directorio temp NO existe
+Tue Oct 1 21:09:48 -03 2019 - - Estado de instalacion - INF - ATENCION: El directorio rechazados NO existe
+Tue Oct 1 21:09:49 -03 2019 - - Estado de instalacion - INF - ATENCION: El directorio procesados NO existe
+Tue Oct 1 21:09:50 -03 2019 - - Estado de instalacion - INF - ATENCION: El directorio salida NO existe
+Tue Oct 1 21:09:51 -03 2019 - - Estado de instalacion - INF - El directorio conf existe
+Tue Oct 1 21:09:52 -03 2019 - - Estado de instalacion - INF - Faltan los directorios:
+Tue Oct 1 21:09:52 -03 2019 - - Estado de instalacion - INF - bin maestros nuevos temp rechazados procesados salida
+Tue Oct 1 21:10:14 -03 2019 - - Estado de instalacion - INF - La opcion elegida para reinstalar fue
+Tue Oct 1 21:10:14 -03 2019 - - Estado de instalacion - INF - Reanudando la instalacion
+Tue Oct 1 21:10:14 -03 2019 - - Estado de instalacion - INF - Paso 2: Creacion de los directorios
+Tue Oct 1 21:10:14 -03 2019 - - Estado de instalacion - INF - Se creo directorio (GRUPO01/bin)
+Tue Oct 1 21:10:15 -03 2019 - - Estado de instalacion - INF - Se creo directorio (GRUPO01/maestros)
+Tue Oct 1 21:10:16 -03 2019 - - Estado de instalacion - INF - Se creo directorio (GRUPO01/nuevos)
+Tue Oct 1 21:10:17 -03 2019 - - Estado de instalacion - INF - Se creo directorio (GRUPO01/temp)
+Tue Oct 1 21:10:18 -03 2019 - - Estado de instalacion - INF - Se creo directorio (GRUPO01/rechazados)
+Tue Oct 1 21:10:19 -03 2019 - - Estado de instalacion - INF - Se creo directorio (GRUPO01/procesados)
+Tue Oct 1 21:10:20 -03 2019 - - Estado de instalacion - INF - Se creo directorio (GRUPO01/salida)
+Tue Oct 1 21:10:21 -03 2019 - - Estado de instalacion - INF - Paso 3: Descomprimiendo archivos
+Tue Oct 1 21:10:24 -03 2019 - - Estado de instalacion - INF - Archivos descomprimidos
+Tue Oct 1 21:10:26 -03 2019 - - Estado de instalacion - INF - Guardando archivos originales
+Tue Oct 1 21:10:26 -03 2019 - - Estado de instalacion - INF - bin maestros nuevos temp rechazados procesados salida conf
+Tue Oct 1 21:10:26 -03 2019 - - Estado de instalacion - INF - Paso 4: Moviendo archivos
+Tue Oct 1 21:10:26 -03 2019 - - Estado de instalacion - INF - Moviendo helpers.sh GRUPO01/bin
+Tue Oct 1 21:10:27 -03 2019 - - Estado de instalacion - INF - Moviendo initialize.sh GRUPO01/bin
+Tue Oct 1 21:10:28 -03 2019 - - Estado de instalacion - INF - Moviendo install.sh GRUPO01/bin
+Tue Oct 1 21:10:29 -03 2019 - - Estado de instalacion - INF - Moviendo preprocess.sh GRUPO01/bin
+Tue Oct 1 21:10:30 -03 2019 - - Estado de instalacion - INF - Moviendo procesarSalida.sh GRUPO01/bin
+Tue Oct 1 21:10:31 -03 2019 - - Estado de instalacion - INF - Moviendo process.sh GRUPO01/bin
+Tue Oct 1 21:10:32 -03 2019 - - Estado de instalacion - INF - Moviendo start.sh GRUPO01/bin
+Tue Oct 1 21:10:33 -03 2019 - - Estado de instalacion - INF - Moviendo stop.sh GRUPO01/bin
+Tue Oct 1 21:10:34 -03 2019 - - Estado de instalacion - INF - Archivos movidos
+Tue Oct 1 21:10:34 -03 2019 - - Estado de instalacion - INF - Eliminando archivos innecesarios
+Tue Oct 1 21:10:34 -03 2019 - - Estado de instalacion - INF - La instalacion finalizo correctamente

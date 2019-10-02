@@ -1,0 +1,28 @@
+lun sep 30 13:27:42 -03 2019 - jowi - Estado de intalacion - INF - Se creo el archivo log.txt
+lun sep 30 13:27:42 -03 2019 - jowi - Estado de instalacion - INF - La instalacion comenzo
+lun sep 30 13:27:42 -03 2019 - jowi - Estado de instalacion - INF - Se crearon los directorios inciales GRUPO01 y conf
+lun sep 30 13:27:43 -03 2019 - jowi - Estado de instalacion - INF - Paso 1: Seleccionar directorios
+lun sep 30 13:27:49 -03 2019 - jowi - Estado de instalacion - INF - La opcion elegida para confirmar la instalacion fue: SI
+lun sep 30 13:27:49 -03 2019 - jowi - Estado de instalacion - INF - Guardando configuracion de los directorios
+lun sep 30 13:27:49 -03 2019 - jowi - Estado de instalacion - INF - Configuracion guardada
+lun sep 30 13:27:50 -03 2019 - jowi - Estado de instalacion - INF - Paso 2: Creacion de los directorios
+lun sep 30 13:27:50 -03 2019 - jowi - Estado de instalacion - INF - Se creo directorio (GRUPO01/bin)
+lun sep 30 13:27:51 -03 2019 - jowi - Estado de instalacion - INF - Se creo directorio (GRUPO01/maestros)
+lun sep 30 13:27:52 -03 2019 - jowi - Estado de instalacion - INF - Se creo directorio (GRUPO01/nuevos)
+lun sep 30 13:27:53 -03 2019 - jowi - Estado de instalacion - INF - Se creo directorio (GRUPO01/temp)
+lun sep 30 13:27:54 -03 2019 - jowi - Estado de instalacion - INF - Se creo directorio (GRUPO01/rechazados)
+lun sep 30 13:27:55 -03 2019 - jowi - Estado de instalacion - INF - Se creo directorio (GRUPO01/procesados)
+lun sep 30 13:27:56 -03 2019 - jowi - Estado de instalacion - INF - Se creo directorio (GRUPO01/salida)
+lun sep 30 13:27:57 -03 2019 - jowi - Estado de instalacion - INF - Paso 3: Descomprimiendo archivos
+lun sep 30 13:28:02 -03 2019 - jowi - Estado de instalacion - INF - Archivos descomprimidos
+lun sep 30 13:28:04 -03 2019 - jowi - Estado de instalacion - INF - Paso 4: Moviendo archivos
+lun sep 30 13:28:06 -03 2019 - jowi - Estado de instalacion - INF - Moviendo helpers.sh GRUPO01/bin
+lun sep 30 13:28:07 -03 2019 - jowi - Estado de instalacion - INF - Moviendo initialize.sh GRUPO01/bin
+lun sep 30 13:28:08 -03 2019 - jowi - Estado de instalacion - INF - Moviendo preprocess.sh GRUPO01/bin
+lun sep 30 13:28:09 -03 2019 - jowi - Estado de instalacion - INF - Moviendo procesarSalida.sh GRUPO01/bin
+lun sep 30 13:28:10 -03 2019 - jowi - Estado de instalacion - INF - Moviendo process.sh GRUPO01/bin
+lun sep 30 13:28:11 -03 2019 - jowi - Estado de instalacion - INF - Moviendo start.sh GRUPO01/bin
+lun sep 30 13:28:12 -03 2019 - jowi - Estado de instalacion - INF - Moviendo stop.sh GRUPO01/bin
+lun sep 30 13:28:13 -03 2019 - jowi - Estado de instalacion - INF - Moviendo validaciones.sh GRUPO01/bin
+lun sep 30 13:28:14 -03 2019 - jowi - Estado de instalacion - INF - Archivos movidos
+lun sep 30 13:28:14 -03 2019 - jowi - Estado de instalacion - INF - La instalacion finalizo correctamente
