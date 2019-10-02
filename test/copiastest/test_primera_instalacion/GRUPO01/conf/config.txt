@@ -1,8 +1,0 @@
-bin,bin
-maestros,maestros
-novedades,nuevos
-aceptados,temp
-rechazados,rechazados
-procesados,procesados
-salida,salida
-conf,conf
