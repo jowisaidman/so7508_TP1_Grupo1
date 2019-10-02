@@ -4,6 +4,7 @@ Para comenzar a utilizar el servicio, debe ingresar a la carpeta entrega.
 Luego seguir los pasos explicados a continuacion:
 
 ## Instalacion
+ingresar a la carpeta entrega y alli ejecutar.
 unzip paquete_instalacion.zip<br />
 bash install.sh
 
